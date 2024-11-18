@@ -3,3 +3,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+video {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    margin: 0;
+    padding: 0;
+  }

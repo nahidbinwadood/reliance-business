@@ -1,4 +1,7 @@
-import { Link, NavLink } from 'react-router-dom';
+import BottomNavigationButton from '../components/BottomNavigationButton';
+import Hero from '../components/Hero';
+import NavLinkContainer from '../components/NavLinkContainer';
+import HeroBg from './../components/HeroBg';
 const Navbar = () => {
   const navLinks = [
     {
@@ -26,33 +29,26 @@ const Navbar = () => {
       path: '/contact-us',
     },
   ];
+
   return (
-    <nav className="px-12">
-      <div className="flex justify-between absolute top-16 left-0 bg-transparent px-12 w-full">
-        {/* logo */}
-        <div className="border-4 border-primary h-fit">
-          <Link
-            to={'/'}
-            className="bg-primary text-lg font-poppins font-medium border-2 border-white flex items-center justify-center text-white px-6 py-3"
-          >
-            reliance
-          </Link>
+    <div className="px-12 relative w-full h-screen">
+      {/* Background Video */}
+      <HeroBg />
+
+      {/* navbar */}
+      <nav>
+        <NavLinkContainer navLinks={navLinks} />
+        <div className="absolute top-5 right-0 px-12 text-white">
+          <p className="font-poppins tracking-[0.8px]">Français</p>
         </div>
+      </nav>
 
-        {/* navLinks */}
+      {/* hero */}
+      <Hero />
 
-        <ul className="flex items-center justify-between gap-10 font-poppins font-semibold">
-          {navLinks?.map((link) => (
-            <li key={link?.path}>
-              <NavLink to="/">{link?.title}</NavLink>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className='absolute top-5 right-0 px-12'>
-        <p className='font-poppins tracking-[0.8px]'>Français</p>
-      </div>
-    </nav>
+      {/* bottom navigation button */}
+      <BottomNavigationButton />
+    </div>
   );
 };
 
