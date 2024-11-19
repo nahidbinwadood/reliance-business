@@ -27,6 +27,6 @@ const NavLinkContainer = ({ navLinks }) => {
   );
 };
 NavLinkContainer.propTypes = {
-    navLinks: PropTypes.object.isRequired,
+    navLinks: PropTypes.array.isRequired,
 };
 export default NavLinkContainer;

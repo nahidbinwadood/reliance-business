@@ -39,6 +39,176 @@ export function ButtonUpArrowSvg({ variant }) {
     </svg>
   );
 }
+export function LocationSvg() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="28"
+      height="28"
+      x="0"
+      y="0"
+      viewBox="0 0 512 512"
+      style={{ enableBackground: 'new 0 0 28 28' }}
+      xmlSpace="preserve"
+    >
+      <g>
+        <path
+          d="M256 0C114.841 0 0 114.841 0 256s114.841 256 256 256 256-114.841 256-256S397.159 0 256 0zm0 488C128.075 488 24 383.925 24 256S128.075 24 256 24s232 104.075 232 232-104.075 232-232 232zm0-386.5c-64.335 0-116.676 52.34-116.676 116.675 0 47.923 57.352 125.555 107.316 187.834a11.998 11.998 0 0 0 18.72 0l1.548-1.929c52.302-65.164 105.768-138.209 105.768-185.905C372.676 153.84 320.335 101.5 256 101.5zm.011 277.787c-30.959-39.027-92.687-120.202-92.687-161.112 0-51.101 41.574-92.675 92.676-92.675s92.676 41.574 92.676 92.675c0 41.846-61.251 121.677-92.665 161.112zM256 147.038c-39.226 0-71.138 31.912-71.138 71.138s31.913 71.138 71.138 71.138 71.138-31.912 71.138-71.138-31.912-71.138-71.138-71.138zm0 118.275c-25.992 0-47.138-21.146-47.138-47.138s21.146-47.138 47.138-47.138 47.138 21.146 47.138 47.138-21.146 47.138-47.138 47.138z"
+          fill="white"
+          opacity="1"
+          data-original="#000000"
+        ></path>
+      </g>
+    </svg>
+  );
+}
+export function PersonSvg() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="28"
+      height="28"
+      x="0"
+      y="0"
+      viewBox="0 0 189.524 189.524"
+      style={{ enableBackground: 'new 0 0 28 28' }}
+      xmlSpace="preserve"
+    >
+      <g>
+        <path
+          fillRule="evenodd"
+          d="M170.94 151.134c11.678-15.753 18.584-35.256 18.584-56.372C189.524 42.426 147.097 0 94.762 0 42.426 0 0 42.426 0 94.762c0 52.335 42.426 94.762 94.762 94.762 27.458 0 52.188-11.678 69.496-30.339a95.39 95.39 0 0 0 6.682-8.051zm-5.254-8.991c9.071-13.552 14.361-29.849 14.361-47.381 0-47.102-38.183-85.286-85.286-85.286-47.101 0-85.285 38.184-85.285 85.286 0 17.533 5.29 33.829 14.362 47.381 11.445-17.098 28.909-29.827 49.361-35.155-9.875-6.843-16.342-18.255-16.342-31.179 0-20.934 16.971-37.905 37.905-37.905s37.905 16.971 37.905 37.905c0 12.923-6.468 24.336-16.342 31.178 20.451 5.329 37.916 18.057 49.361 35.156zm-6.104 8.047c-13.299-21.869-37.353-36.476-64.819-36.476-27.467 0-51.522 14.607-64.821 36.477 15.642 18.275 38.878 29.857 64.82 29.857s49.178-11.583 64.82-29.858zm-64.82-45.952c15.701 0 28.429-12.727 28.429-28.429 0-15.701-12.727-28.429-28.429-28.429S66.333 60.109 66.333 75.81s12.728 28.428 28.429 28.428z"
+          clipRule="evenodd"
+          fill="white"
+          opacity="1"
+          data-original="#000000"
+        ></path>
+      </g>
+    </svg>
+  );
+}
+export function ClockSvg() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="28"
+      height="28"
+      x="0"
+      y="0"
+      viewBox="0 0 512 512"
+      style={{ enableBackground: 'new 0 0 512 512' }}
+      xmlSpace="preserve"
+    >
+      <g>
+        <path
+          d="m347.216 301.211-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83-10.966 0-19.83 8.864-19.83 19.83v118.978c0 6.246 2.935 12.136 7.932 15.864l79.318 59.489a19.713 19.713 0 0 0 11.878 3.966c6.048 0 11.997-2.717 15.884-7.952 6.585-8.746 4.8-21.179-3.965-27.743z"
+          fill="white"
+          opacity="1"
+          data-original="#000000"
+        ></path>
+        <path
+          d="M256 0C114.833 0 0 114.833 0 256s114.833 256 256 256 256-114.833 256-256S397.167 0 256 0zm0 472.341c-119.275 0-216.341-97.066-216.341-216.341S136.725 39.659 256 39.659c119.295 0 216.341 97.066 216.341 216.341S375.275 472.341 256 472.341z"
+          fill="white"
+          opacity="1"
+          data-original="#000000"
+        ></path>
+      </g>
+    </svg>
+  );
+}
+export function CheckSvg() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      version="1.1"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="28"
+      height="28"
+      x="0"
+      y="0"
+      viewBox="0 0 682.667 682.667"
+      style={{ enableBackground: 'new 0 0 512 512' }}
+      xmlSpace="preserve"
+    >
+      <g>
+        <defs>
+          <clipPath id="b" clipPathUnits="userSpaceOnUse">
+            <path
+              d="M0 512h512V0H0Z"
+              fill="white"
+              opacity="1"
+              data-original="#000000"
+            ></path>
+          </clipPath>
+        </defs>
+        <mask id="a">
+          <rect
+            width="100%"
+            height="100%"
+            fill="white"
+            opacity="1"
+            data-original="#ffffff"
+          ></rect>
+        </mask>
+        <g mask="url(#a)">
+          <path
+            d="m0 0-134.174-134.174-63.873 63.872"
+            style={{
+              strokeWidth: '40',
+              strokeLinecap: 'round',
+              strokeLinejoin: 'round',
+              strokeMiterlimit: '10',
+              strokeDasharray: 'none',
+              strokeOpacity: '1',
+            }}
+            transform="matrix(1.33333 0 0 -1.33333 473.365 251.884)"
+            fill="none"
+            stroke="white"
+            strokeWidth="40"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeMiterlimit="10"
+            strokeDasharray="none"
+            strokeOpacity=""
+            data-original="#000000"
+          ></path>
+          <g
+            clipPath="url(#b)"
+            transform="matrix(1.33333 0 0 -1.33333 0 682.667)"
+          >
+            <path
+              d="M0 0c0-130.339-105.661-236-236-236S-472-130.339-472 0s105.661 236 236 236S0 130.339 0 0Z"
+              style={{
+                strokeWidth: '40',
+                strokeLinecap: 'round',
+                strokeLinejoin: 'round',
+                strokeMiterlimit: '10',
+                strokeDasharray: 'none',
+                strokeOpacity: '1',
+              }}
+              transform="translate(492 256)"
+              fill="none"
+              stroke="white"
+              strokeWidth="40"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeMiterlimit="10"
+              strokeDasharray="none"
+              strokeOpacity=""
+              data-original="#000000"
+            ></path>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
 ButtonUpArrowSvg.propTypes = {
   variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
 };

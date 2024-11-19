@@ -3,17 +3,22 @@ import { PropTypes } from 'prop-types';
 
 const TitleContainer = ({
   highlightedText,
+  titleColor,
   title,
   buttonText,
   variant,
   borderColor,
 }) => {
   return (
-    <div className='w-full flex items-center justify-between'>
-      <div className="font-poppins">
+    <div className="w-full flex items-center justify-between">
+      <div className="font-poppins uppercase">
         <h2 className="text-5xl font-extrabold flex flex-col text-textColor leading-[56px]">
           {highlightedText}
-          <span className="text-white">{title}</span>
+          <span
+            className={`${titleColor == 'dark' ? 'text-black' : 'text-white'}`}
+          >
+            {title}
+          </span>
         </h2>
         {borderColor && (
           <div
@@ -34,10 +39,11 @@ const TitleContainer = ({
 };
 
 TitleContainer.propTypes = {
-  highlightedText: PropTypes.string.isRequired,
-  borderColor: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  highlightedText: PropTypes.string,
+  borderColor: PropTypes.string,
+  titleColor: PropTypes.string,
+  title: PropTypes.string,
   buttonText: PropTypes.string,
-  variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
+  variant: PropTypes.oneOf(['primary', 'secondary']),
 };
 export default TitleContainer;
