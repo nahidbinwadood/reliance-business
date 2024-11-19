@@ -4,9 +4,45 @@
 @tailwind components;
 @tailwind utilities;
 video {
-    background-color: transparent !important;
-    border: none !important;
-    outline: none !important;
-    margin: 0;
-    padding: 0;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes slideVertical {
+  0% {
+    transform: translateY(0); /* Start at the initial position */
   }
+  100% {
+    transform: translateY(-33.33%); /* Move up by half the content's height */
+  }
+}
+
+.animate-slideVertical {
+  animation-name: slideVertical;
+  animation-duration: 50s; /* Adjust this for speed */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes slideVerticalTopToBottom {
+  0% {
+    transform: translateY(-33.33%); /* Start at the last few images */
+  }
+  100% {
+    transform: translateY(0); /* Scroll down to the start */
+  }
+}
+
+.animate-slideVerticalTopToBottom {
+  animation-name: slideVerticalTopToBottom;
+  animation-duration: 50s; /* Adjust this for desired speed */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+
+

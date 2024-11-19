@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import TitleContainer from '../../../components/TitleContainer';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
+import LeftSlider from '../../../components/sliders/LeftSlider';
+import RightSlider from '../../../components/sliders/RightSlider';
 
 const HomepageTabs = () => {
   const tabs = useMemo(
@@ -15,6 +17,23 @@ const HomepageTabs = () => {
     []
   );
 
+  const leftSliderImages = [
+    'https://i.postimg.cc/T1B4CXwh/1.jpg',
+    'https://i.postimg.cc/j5dmjXmq/2.jpg',
+    'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+    'https://i.postimg.cc/XJHhB56f/4.jpg',
+    'https://i.postimg.cc/QNzwXcbs/5.jpg',
+    'https://i.postimg.cc/L40Kncmc/6.jpg',
+  ];
+
+  const rightSliderImages = [
+    'https://i.postimg.cc/XJHhB56f/4.jpg',
+    'https://i.postimg.cc/QNzwXcbs/5.jpg',
+    'https://i.postimg.cc/L40Kncmc/6.jpg',
+    'https://i.postimg.cc/T1B4CXwh/1.jpg',
+    'https://i.postimg.cc/j5dmjXmq/2.jpg',
+    'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+  ];
   const [activeTab, setActiveTab] = useState(tabs[0].title);
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
 
@@ -40,10 +59,10 @@ const HomepageTabs = () => {
               key={tab.title}
               ref={(el) => (tabRefs.current[index] = el)}
               onClick={() => setActiveTab(tab.title)}
-              className={`cursor-pointer text-lg pb-3 text-[#313131] ${
+              className={`cursor-pointer text-lg pb-3  ${
                 activeTab === tab.title
-                  ? 'font-bold text-textColor'
-                  : 'font-medium'
+                  ? 'font-semibold text-black'
+                  : 'font-medium text-[#313131]'
               }`}
             >
               {tab.title}
@@ -62,7 +81,7 @@ const HomepageTabs = () => {
       </div>
 
       {/* tab contents */}
-      <div className="mt-16 grid grid-cols-2 gap-20 h-[60vh]">
+      <div className="mt-16 grid grid-cols-2 gap-20">
         <div className="flex justify-center flex-col">
           <TitleContainer
             highlightedText="Our"
@@ -87,9 +106,15 @@ const HomepageTabs = () => {
           </div>
 
           {/* button */}
-          <div className='mt-10'>
+          <div className="mt-10">
             <PrimaryButton title="View our projects" variant="dark" />
           </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <LeftSlider leftSliderImages={leftSliderImages} />
+
+          <RightSlider rightSliderImages={rightSliderImages} />
         </div>
       </div>
     </section>
