@@ -16,13 +16,13 @@ video {
     transform: translateY(0); /* Start at the initial position */
   }
   100% {
-    transform: translateY(-33.33%); /* Move up by half the content's height */
+    transform: translateY(-100%); /* Move up by half the content's height */
   }
 }
 
 .animate-slideVertical {
   animation-name: slideVertical;
-  animation-duration: 50s; /* Adjust this for speed */
+  animation-duration: 300s; /* Adjust this for speed */
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
@@ -39,7 +39,7 @@ video {
 
 .animate-slideVerticalTopToBottom {
   animation-name: slideVerticalTopToBottom;
-  animation-duration: 50s; /* Adjust this for desired speed */
+  animation-duration: 80s; /* Adjust this for desired speed */
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }

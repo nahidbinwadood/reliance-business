@@ -34,12 +34,14 @@ const contentsCardInfo = [
   },
   {
     svg: <PersonSvg />,
-    count: '200+',
+    count: '200',
+    plus: true,
     title: 'Employees',
   },
   {
     svg: <ClockSvg />,
-    count: '70+',
+    count: '70',
+    plus: true,
     title: 'Years',
   },
   {
@@ -77,7 +79,6 @@ const AboutUs = () => {
           <p>reliance</p>
         </div>
 
-        
         {/* Background Image Container */}
         <div
           className="min-h-[750px] rounded-b-[30px] bg-no-repeat bg-center bg-cover overflow-hidden relative z-20"

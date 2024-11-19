@@ -2,9 +2,9 @@
 
 const Footer = () => {
     return (
-        <div>
-            <h1>hello from footer</h1>
-        </div>
+        <footer className="bg-[#16358F] px-5 text-white font-poppins text-sm">
+            <p className="py-4">©2024. All Rights Reserved. Reliance Construction</p>
+        </footer>
     );
 };
 

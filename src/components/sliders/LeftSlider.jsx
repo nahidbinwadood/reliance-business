@@ -1,12 +1,19 @@
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const LeftSlider = ({ leftSliderImages }) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     // Duplicate the array to create seamless scrolling
-    setImages([...leftSliderImages, ...leftSliderImages]);
+    setImages([
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+    ]);
   }, [leftSliderImages]);
 
   return (
@@ -15,7 +22,11 @@ const LeftSlider = ({ leftSliderImages }) => {
         {images.map((image, index) => {
           const position = index % 3; // Dynamically assign heights
           const height =
-            position === 0 ? "h-[150px]" : position === 1 ? "h-[300px]" : "h-[200px]";
+            position === 0
+              ? 'h-[150px]'
+              : position === 1
+              ? 'h-[300px]'
+              : 'h-[200px]';
 
           return (
             <div key={`${image}-${index}`} className={`${height} w-full`}>
