@@ -1,46 +1,188 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
-import TitleContainer from '../../../components/TitleContainer';
-import PrimaryButton from '../../../components/buttons/PrimaryButton';
-import LeftSlider from '../../../components/sliders/LeftSlider';
-import RightSlider from '../../../components/sliders/RightSlider';
+import TabContents from '../../../components/TabContents';
 
 const HomepageTabs = () => {
   const tabs = useMemo(
     () => [
-      { title: 'Industrial' },
-      { title: 'Hospitality' },
-      { title: 'Residential' },
-      { title: 'Advanced Technology' },
-      { title: 'Retail' },
-      { title: 'Car Dealerships' },
+      {
+        title: 'Industrial',
+        highlightedText: 'Our',
+        contentTitle: 'Industrial',
+        images: {
+          leftSliderImages: [
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+          ],
+          rightSliderImages: [
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+          ],
+        },
+        description: [
+          'We undertake a diverse range of projects - from high-rise office towers and luxury hotels to vast shopping centers and cutting-edge facilities for manufacturing.',
+          'Our portfolio reflects a commitment to excellence in both renovation and new construction, showcasing our ability to deliver exceptional results across a wide spectrum of industries and project scopes.',
+        ],
+        navigationTitle: 'View our projects',
+      },
+      {
+        title: 'Hospitality',
+        highlightedText: 'Our',
+        contentTitle: 'Hospitality',
+        images: {
+          leftSliderImages: [
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+          ],
+          rightSliderImages: [
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+          ],
+        },
+        description: [
+          'We specialize in creating luxurious and inviting spaces for the hospitality industry, including hotels, resorts, and entertainment facilities.',
+          'Our projects emphasize functionality, aesthetics, and sustainability, meeting the unique needs of our clients and their guests.',
+        ],
+        navigationTitle: 'Explore our hospitality projects',
+      },
+      {
+        title: 'Residential',
+        highlightedText: 'Our',
+        contentTitle: 'Residential',
+        images: {
+          leftSliderImages: [
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+          ],
+          rightSliderImages: [
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+          ],
+        },
+        description: [
+          'Our residential projects range from modern apartments to luxury estates, tailored to meet the individual needs of homeowners.',
+          'We focus on innovative designs, high-quality materials, and energy-efficient solutions to create homes that are both beautiful and functional.',
+        ],
+        navigationTitle: 'View residential designs',
+      },
+      {
+        title: 'Advanced Technology',
+        highlightedText: 'Advanced',
+        contentTitle: 'Technology',
+        images: {
+          leftSliderImages: [
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+          ],
+          rightSliderImages: [
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+          ],
+        },
+        description: [
+          'We design and build cutting-edge facilities for advanced technology companies, focusing on precision and innovation.',
+          'Our expertise includes data centers, research labs, and manufacturing plants tailored to meet stringent technological requirements.',
+        ],
+        navigationTitle: 'Learn about our tech projects',
+      },
+      {
+        title: 'Retail',
+        highlightedText: 'Our',
+        contentTitle: 'Retail',
+        images: {
+          leftSliderImages: [
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+          ],
+          rightSliderImages: [
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+          ],
+        },
+        description: [
+          'Our retail projects include shopping malls, flagship stores, and boutique outlets, designed to create exceptional customer experiences.',
+          'We focus on optimizing space, incorporating modern aesthetics, and meeting the branding needs of our clients.',
+        ],
+        navigationTitle: 'Browse retail projects',
+      },
+      {
+        title: 'Car Dealerships',
+        highlightedText: 'Car',
+        contentTitle: 'Dealerships',
+        images: {
+          leftSliderImages: [
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+          ],
+          rightSliderImages: [
+            'https://i.postimg.cc/XJHhB56f/4.jpg',
+            'https://i.postimg.cc/QNzwXcbs/5.jpg',
+            'https://i.postimg.cc/L40Kncmc/6.jpg',
+            'https://i.postimg.cc/T1B4CXwh/1.jpg',
+            'https://i.postimg.cc/j5dmjXmq/2.jpg',
+            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+          ],
+        },
+        description: [
+          'We design state-of-the-art car dealerships that showcase vehicles in an inviting and professional environment.',
+          'Our projects prioritize functionality, aesthetics, and customer experience, ensuring spaces that drive sales and brand loyalty.',
+        ],
+        navigationTitle: 'Discover dealership projects',
+      },
     ],
     []
   );
 
-  const leftSliderImages = [
-    'https://i.postimg.cc/T1B4CXwh/1.jpg',
-    'https://i.postimg.cc/j5dmjXmq/2.jpg',
-    'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-    'https://i.postimg.cc/XJHhB56f/4.jpg',
-    'https://i.postimg.cc/QNzwXcbs/5.jpg',
-    'https://i.postimg.cc/L40Kncmc/6.jpg',
-  ];
-
-  const rightSliderImages = [
-    'https://i.postimg.cc/XJHhB56f/4.jpg',
-    'https://i.postimg.cc/QNzwXcbs/5.jpg',
-    'https://i.postimg.cc/L40Kncmc/6.jpg',
-    'https://i.postimg.cc/T1B4CXwh/1.jpg',
-    'https://i.postimg.cc/j5dmjXmq/2.jpg',
-    'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-  ];
-  const [activeTab, setActiveTab] = useState(tabs[0].title);
+  const [activeTab, setActiveTab] = useState(tabs[0]);
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
 
   const tabRefs = useRef([]);
 
   useEffect(() => {
-    const activeIndex = tabs.findIndex((tab) => tab.title === activeTab);
+    const activeIndex = tabs.findIndex((tab) => tab.title === activeTab.title);
     const activeTabElement = tabRefs.current[activeIndex];
 
     if (activeTabElement) {
@@ -58,7 +200,7 @@ const HomepageTabs = () => {
             <div
               key={tab.title}
               ref={(el) => (tabRefs.current[index] = el)}
-              onClick={() => setActiveTab(tab.title)}
+              onClick={() => setActiveTab(tab)}
               className={`cursor-pointer text-lg pb-3  ${
                 activeTab === tab.title
                   ? 'font-semibold text-black'
@@ -81,42 +223,7 @@ const HomepageTabs = () => {
       </div>
 
       {/* tab contents */}
-      <div className="mt-16 grid grid-cols-2 gap-20">
-        <div className="flex justify-center flex-col">
-          <TitleContainer
-            highlightedText="Our"
-            title="Projects"
-            titleColor="dark"
-            borderColor="dark"
-          />
-
-          {/* description */}
-          <div className="text-secondaryText mt-6   text-start space-y-6 text-lg">
-            <p>
-              We undertake a diverse range of projects – from high-rise office
-              towers and luxury hotels to vast shopping centers and cutting-edge
-              facilities for manufacturing.{' '}
-            </p>
-            <p>
-              Our portfolio reflects a commitment to excellence in both
-              renovation and new construction, showcasing our ability to deliver
-              exceptional results across a wide spectrum of industries and
-              project scopes.
-            </p>
-          </div>
-
-          {/* button */}
-          <div className="mt-10">
-            <PrimaryButton title="View our projects" variant="dark" />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
-          <LeftSlider leftSliderImages={leftSliderImages} />
-
-          <RightSlider rightSliderImages={rightSliderImages} />
-        </div>
-      </div>
+      <TabContents tab={activeTab} />
     </section>
   );
 };

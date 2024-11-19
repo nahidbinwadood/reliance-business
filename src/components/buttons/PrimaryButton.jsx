@@ -32,7 +32,7 @@ const PrimaryButton = ({ title, variant }) => {
 
 PrimaryButton.propTypes = {
     title: PropTypes.string.isRequired,
-    variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,  
+    variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
   };
 
 export default PrimaryButton;

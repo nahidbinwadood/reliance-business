@@ -30,7 +30,7 @@ video {
 
 @keyframes slideVerticalTopToBottom {
   0% {
-    transform: translateY(-33.33%); /* Start at the last few images */
+    transform: translateY(-40%); /* Start at the last few images */
   }
   100% {
     transform: translateY(0); /* Scroll down to the start */
