@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import { ButtonUpArrowSvg } from '../SvgContainer';
-import { PropTypes } from 'prop-types';
+ 
 
 const PrimaryButton = ({ title, variant }) => {
   return (
@@ -30,9 +31,6 @@ const PrimaryButton = ({ title, variant }) => {
   );
 };
 
-PrimaryButton.propTypes = {
-    title: PropTypes.string.isRequired,
-    variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
-  };
+
 
 export default PrimaryButton;

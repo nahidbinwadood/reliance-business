@@ -29,24 +29,24 @@ const aboutUsInfo = [
 const contentsCardInfo = [
   {
     svg: <LocationSvg />,
-    count: '3',
+    count: 3,
     title: 'Offices',
   },
   {
     svg: <PersonSvg />,
-    count: '200',
+    count: 200,
     plus: true,
     title: 'Employees',
   },
   {
     svg: <ClockSvg />,
-    count: '70',
+    count: 70,
     plus: true,
     title: 'Years',
   },
   {
     svg: <CheckSvg />,
-    count: '132',
+    count: 132,
     title: 'Active Projects',
   },
 ];

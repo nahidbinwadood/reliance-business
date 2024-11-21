@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+/* eslint-disable react/prop-types */
 export function DownArrowSvg() {
   return (
     <svg
@@ -209,6 +209,64 @@ export function CheckSvg() {
     </svg>
   );
 }
-ButtonUpArrowSvg.propTypes = {
-  variant: PropTypes.oneOf(['primary', 'secondary']).isRequired,
-};
+export function MapLocationBgSvg() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="1400"
+      height="343"
+      viewBox="0 0 1400 343"
+      fill="none"
+    >
+      <g filter="url(#filter0_d_25_193)">
+        <path
+          d="M21 62.7008C21 54.4527 27.6594 47.7521 35.9073 47.7011L172.336 46.8584C178.721 46.8189 184.394 42.7477 186.334 36.665C188.337 30.3875 190.5 23.173 190.5 21.2932C190.5 19.2201 193.832 28.5466 196.55 36.4971C198.645 42.6283 204.379 46.797 210.859 46.8037L1156.02 47.7777C1164.29 47.7863 1171 54.4995 1171 62.7777V308.793C1171 317.078 1164.28 323.793 1156 323.793H36C27.7157 323.793 21 317.078 21 308.793V62.7008Z"
+          fill="white"
+        />
+        <path
+          d="M21.75 62.7008C21.75 54.8651 28.0764 48.4995 35.912 48.4511L172.341 47.6084C179.042 47.567 185.007 43.2928 187.049 36.893C188.051 33.7511 189.096 30.3683 189.89 27.5323C190.288 26.1149 190.624 24.8268 190.862 23.7702C190.899 23.6068 190.934 23.4473 190.967 23.2922C191.214 23.8832 191.496 24.5956 191.805 25.4042C192.973 28.457 194.482 32.7653 195.84 36.7397C198.037 43.1691 204.053 47.5467 210.858 47.5537L1156.01 48.5277C1163.88 48.5358 1170.25 54.9134 1170.25 62.7777V308.793C1170.25 316.663 1163.87 323.043 1156 323.043H36C28.1299 323.043 21.75 316.663 21.75 308.793V62.7008Z"
+          stroke="#4096FA"
+          strokeWidth="1.5"
+        />
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_25_193"
+          x="0"
+          y="0"
+          width="1190"
+          height="342.793"
+          filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix
+            in="SourceAlpha"
+            type="matrix"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha"
+          />
+          <feOffset dx="-1" dy="-1" />
+          <feGaussianBlur stdDeviation="10" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix
+            type="matrix"
+            values="0 0 0 0 0.25098 0 0 0 0 0.588235 0 0 0 0 0.980392 0 0 0 0.25 0"
+          />
+          <feBlend
+            mode="normal"
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_25_193"
+          />
+          <feBlend
+            mode="normal"
+            in="SourceGraphic"
+            in2="effect1_dropShadow_25_193"
+            result="shape"
+          />
+        </filter>
+      </defs>
+    </svg>
+  );
+}
+

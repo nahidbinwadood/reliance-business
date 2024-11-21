@@ -27,7 +27,6 @@ video {
   animation-iteration-count: infinite;
 }
 
-
 @keyframes slideVerticalTopToBottom {
   0% {
     transform: translateY(-40%); /* Start at the last few images */
@@ -44,5 +43,24 @@ video {
   animation-iteration-count: infinite;
 }
 
+.our-services .swiper {
+  padding-bottom: 30px;
+}
+.our-services .swiper-pagination-bullet {
+  width: var(
+    --swiper-pagination-bullet-width,
+    var(--swiper-pagination-bullet-size, 30px)
+  );
+  height: var(
+    --swiper-pagination-bullet-height,
+    var(--swiper-pagination-bullet-size, 4px)
+  );
+  display: inline-block;
+  border-radius: 0px !important;
+  opacity: var(--swiper-pagination-bullet-inactive-opacity, 0.2);
+}
 
-
+.our-services .swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: #4096fa;
+}

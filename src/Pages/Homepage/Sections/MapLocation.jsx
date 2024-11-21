@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import map from '../../../assets/images/map-1.png';
+import { MapLocationBgSvg } from '../../../components/SvgContainer';
 
 const MapLocation = () => {
   const locations = [
@@ -36,7 +37,7 @@ const MapLocation = () => {
   const [activeLocation, setActiveLocation] = useState('');
   return (
     <div
-      className="mt-16"
+      className="mt-16 relative"
       style={{
         backgroundImage: `url(${map})`,
         backgroundSize: 'cover',
@@ -45,7 +46,12 @@ const MapLocation = () => {
         width: '100%',
         height: '500px',
       }}
-    ></div>
+    >
+
+      <div className='absolute -bottom-40 left-0 px-24'>
+      <MapLocationBgSvg/>
+      </div>
+    </div>
   );
 };
 
