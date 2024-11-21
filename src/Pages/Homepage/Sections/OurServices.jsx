@@ -111,7 +111,7 @@ const OurServices = () => {
                 setActiveTab(services[e.realIndex]);
               }}
               autoplay={{
-                delay: 1000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
               spaceBetween={30}

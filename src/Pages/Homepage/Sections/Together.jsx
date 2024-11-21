@@ -3,7 +3,7 @@ import persons from '../../../assets/images/persons.png';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
 const Together = () => {
   return (
-    <div className="mt-6 ">
+    <div className="mt-6 mb-10">
       {/* title */}
       <div className="px-24">
         <TitleContainer

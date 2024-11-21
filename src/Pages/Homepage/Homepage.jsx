@@ -11,7 +11,7 @@ const Homepage = () => {
       <HomepageTabs />
       <OurServices />
       <Together />
-      <MapLocation />
+      {/* <MapLocation /> */}
     </>
   );
 };

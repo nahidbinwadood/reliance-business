@@ -37,7 +37,7 @@ const MapLocation = () => {
   const [activeLocation, setActiveLocation] = useState('');
   return (
     <div
-      className="mt-16 relative"
+      className="mt-16 relative mb-72"
       style={{
         backgroundImage: `url(${map})`,
         backgroundSize: 'cover',
@@ -48,8 +48,8 @@ const MapLocation = () => {
       }}
     >
 
-      <div className='absolute -bottom-40 left-0 px-24'>
-      <MapLocationBgSvg/>
+      <div className='absolute -bottom-40 w-full mx-24 bg-white border-textColor h-[500px]'>
+      <h1>hello world</h1>
       </div>
     </div>
   );
