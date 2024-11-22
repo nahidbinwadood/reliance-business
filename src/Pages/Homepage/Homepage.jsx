@@ -1,4 +1,5 @@
 import AboutUs from './Sections/AboutUs';
+import GoUp from './Sections/GoUp';
 import HomepageTabs from './Sections/HomepageTabs';
 import MapLocation from './Sections/MapLocation';
 import OurServices from './Sections/OurServices';
@@ -12,6 +13,7 @@ const Homepage = () => {
       <OurServices />
       <Together />
       <MapLocation />
+      <GoUp />
     </>
   );
 };

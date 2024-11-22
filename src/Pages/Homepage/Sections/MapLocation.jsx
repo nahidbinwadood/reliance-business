@@ -70,14 +70,14 @@ const MapLocation = () => {
 
   return (
     <div
-      className="mt-16 relative mb-72 transition-all duration-1000 ease-in-out"
+      className="mt-16 relative transition-all duration-1000 ease-in-out bg-[#f4f8fb]"
       style={{
         backgroundImage: `url(${locations[activeIndex].image})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         width: '100%',
-        height: '500px',
+        height: '400px',
       }}
     >
       <div
@@ -149,7 +149,6 @@ const MapLocation = () => {
                 </Link>
               </div>
             </div>
-
           ))}
         </div>
       </div>
