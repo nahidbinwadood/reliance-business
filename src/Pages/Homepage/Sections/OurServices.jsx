@@ -7,9 +7,9 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 // import required modules
-
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
+
 const OurServices = () => {
   const services = useMemo(
     () => [
@@ -57,8 +57,13 @@ const OurServices = () => {
 
   const handleTabChange = (service) => {
     setActiveTab(service);
-    swiperInstance?.slideTo(services.indexOf(service));
+    const serviceIndex = services.indexOf(service);
+    // Adjust for loop
+    if (swiperInstance) {
+      swiperInstance.slideToLoop(serviceIndex, 500);
+    }
   };
+
   return (
     <div className="bg-bgPrimary py-16 px-24">
       {/* title */}
@@ -76,7 +81,6 @@ const OurServices = () => {
         </p>
 
         {/* sliders */}
-
         <div className="flex w-full mt-12">
           <div className="w-1/2 flex flex-col gap-3">
             {services?.map((service) => (
@@ -88,7 +92,7 @@ const OurServices = () => {
                 <div
                   onClick={() => handleTabChange(service)}
                   className={`cursor-pointer ${
-                    activeTab.title == service?.title
+                    activeTab.title === service?.title
                       ? 'text-[#4096FA]'
                       : 'text-white'
                   }`}

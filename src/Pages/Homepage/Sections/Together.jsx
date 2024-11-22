@@ -33,14 +33,12 @@ const Together = () => {
           src={persons}
           alt="Persons"
         />
-
-        <div className="h-[1px] w-full bg-white absolute top-[10%] left-0"></div>
       </div>
 
       {/* line */}
-      <div className="h-[1px] w-full mt-8 bg-bgPrimary" />
-      <div className='mx-24 mt-3'>
-      <PrimaryButton title={"See Career Opportunities"} variant={"dark"} />
+
+      <div className="mx-24 mt-8">
+        <PrimaryButton title={'See Career Opportunities'} variant={'dark'} />
       </div>
     </div>
   );
