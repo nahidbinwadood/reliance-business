@@ -67,7 +67,9 @@ const OurServices = () => {
   return (
     <div className="bg-bgPrimary py-16 px-24">
       {/* title */}
+      
       <div>
+
         <TitleContainer
           highlightedText="OUR"
           title="SERVICES"
