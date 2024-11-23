@@ -8,10 +8,12 @@ const TitleContainer = ({
   buttonText,
   variant,
   borderColor,
+  titleContainerBtnRef,
+  titleContainerTitleRef,
 }) => {
   return (
     <div className="w-full flex items-center justify-between">
-      <div className="font-poppins uppercase">
+      <div ref={titleContainerTitleRef} className="font-poppins uppercase">
         <h2 className="text-5xl font-extrabold flex flex-col text-textColor leading-[56px]">
           {highlightedText}
           <span
@@ -30,7 +32,7 @@ const TitleContainer = ({
       </div>
 
       {buttonText && (
-        <div>
+        <div ref={titleContainerBtnRef} className="title-container-btn">
           <PrimaryButton title={buttonText} variant={variant} />
         </div>
       )}
@@ -44,6 +46,8 @@ TitleContainer.propTypes = {
   titleColor: PropTypes.string,
   title: PropTypes.string,
   buttonText: PropTypes.string,
+  titleContainerBtnRef: PropTypes.string,
+  titleContainerTitleRef: PropTypes.string,
   variant: PropTypes.oneOf(['primary', 'secondary']),
 };
 export default TitleContainer;

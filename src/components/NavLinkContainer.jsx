@@ -11,7 +11,7 @@ const NavLinkContainer = ({ navLinks }) => {
   useGSAP(() => {
     gsap.from('.navbar-contents', {
       y: 15,
-      duration: 1.5,
+      duration: 1,
       stagger: 0.5,
       ease: 'power2.out',
       blur: 10,

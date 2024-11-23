@@ -1,3 +1,5 @@
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 import PropTypes from 'prop-types';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';
@@ -8,17 +10,26 @@ const AboutContentCard = ({ info }) => {
   // Intersection Observer Hook
   const { ref, inView } = useInView({
     triggerOnce: true, // Ensures animation runs only once
-    threshold: 0.5, // Trigger when 50% of the component is in the viewport
+    threshold: 0.3, // Trigger when 50% of the component is in the viewport
   });
 
+  // useGSAP(() => {
+  //   gsap.from(".about-counter", {
+  //     y: 30,
+  //     duration: 1,
+  //     opacity:0,
+  //     stagger: 0.3,
+  //     ease: 'power2.out',
+  //   });
+  // });
   return (
-    <div ref={ref}>
+    <div ref={ref} className='about-counter'>
       <div>
         <div className="pb-5 border-b-2 border-white/65">{svg}</div>
         <div className="mt-5 text-white">
           {inView && (
             <span className="font-semi text-6xl">
-              <CountUp start={0} duration={10} delay={0} end={count} />
+              <CountUp start={0} duration={10} delay={0.5} end={count} />
               {plus && '+'}
             </span>
           )}

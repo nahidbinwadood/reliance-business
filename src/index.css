@@ -65,9 +65,10 @@ video {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
   background: #4096fa;
 }
-
-
-
-.circle_overlay_effect{
-  clip-path: circle(100% at 50% 50%);
+.white-overlay{
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
+.circle_overlay_effect {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+

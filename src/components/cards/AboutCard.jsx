@@ -4,9 +4,9 @@ const AboutCard = ({ info, index }) => {
   return (
     <div
       key={info?.highlightedText}
-      className={` ${
+      className={`about-card ${
         index == 1 ? 'px-16 py-8 border-x border-white/25' : 'px-16 py-8'
-      }`}
+      } ${index == 0 ? 'pl-0 pr-16' : ''} ${index == 2 ? 'pr-0 pl-16' : ''}`}
     >
       <p className={`text-lg font-semibold text-textColor`}>
         {info?.highlightedText}

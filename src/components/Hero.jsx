@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
 gsap.registerPlugin(useGSAP);
 
-const Hero = () => {
+const Hero = ({heroTitleRef}) => {
   const textHolder = `overflow-hidden `;
   // const textRef = useRef(null);
 
@@ -17,7 +18,7 @@ const Hero = () => {
   });
 
   return (
-    <div className="h-full w-full flex items-center font-poppins text-white uppercase">
+    <div ref={heroTitleRef} className="h-full w-full flex items-center font-poppins text-white uppercase">
       <div className="text-6xl 2xl:text-8xl flex flex-col font-extrabold z-10 ml-40">
         <div className={textHolder}>
           {' '}
