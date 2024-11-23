@@ -31,16 +31,14 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="px-12 relative w-full h-screen">
+    <div className="px-12 relative w-full h-[90vh]">
       {/* Background Video */}
       <HeroBg />
 
       {/* navbar */}
       <nav>
         <NavLinkContainer navLinks={navLinks} />
-        <div className="absolute top-5 right-0 px-12 text-white">
-          <p className="font-poppins tracking-[0.8px]">Français</p>
-        </div>
+
       </nav>
 
       {/* hero */}

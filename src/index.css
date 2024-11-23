@@ -46,6 +46,7 @@ video {
 .our-services .swiper {
   padding-bottom: 30px;
 }
+
 .our-services .swiper-pagination-bullet {
   width: var(
     --swiper-pagination-bullet-width,
@@ -63,4 +64,10 @@ video {
 .our-services .swiper-pagination-bullet-active {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
   background: #4096fa;
+}
+
+
+
+.circle_overlay_effect{
+  clip-path: circle(100% at 50% 50%);
 }
