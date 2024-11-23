@@ -9,6 +9,9 @@ import 'swiper/css/pagination';
 // import required modules
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const OurServices = () => {
   const services = useMemo(
@@ -51,7 +54,7 @@ const OurServices = () => {
     ],
     []
   );
-
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
   const [activeTab, setActiveTab] = useState(services[0]);
   const [swiperInstance, setSwiperInstance] = useState(null);
 
@@ -64,18 +67,63 @@ const OurServices = () => {
     }
   };
 
-  return (
-    <div className="bg-bgPrimary py-16 px-24">
-      {/* title */}
-      
-      <div>
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.our-service-container',
+        start: 'top 80%',
+      },
+    });
 
-        <TitleContainer
-          highlightedText="OUR"
-          title="SERVICES"
-          borderColor="light"
-        />
-        <p className="mt-8 text-white w-4/5 leading-[32px]">
+    tl.from('.our-service-content', {
+      y: 20,
+      duration: 0.8,
+      ease: 'power2.out',
+      stagger: 0.3,
+      opacity: 0,
+    })
+      .from('.our-services-point', {
+        y: 10,
+        duration: 0.8,
+        ease: 'power2.out',
+        stagger: 0.3,
+        opacity: 0,
+      })
+      .from('.our-services-btn', {
+        y: 10,
+        duration: 0.4,
+        ease: 'power2.out',
+        stagger: 0.5,
+        opacity: 0,
+      });
+  });
+
+  useGSAP(() => {
+    gsap.from('.our-services-slides', {
+      x: 150,
+      duration: 1,
+      ease: 'power2.out',
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '.our-service-container',
+        start: 'top 50%',
+      },
+    });
+  });
+
+  return (
+    <div className="bg-bgPrimary py-16 px-24 our-service-container">
+      {/* title */}
+
+      <div>
+        <div className="our-service-content">
+          <TitleContainer
+            highlightedText="OUR"
+            title="SERVICES"
+            borderColor="light"
+          />
+        </div>
+        <p className="mt-8 text-white w-4/5 leading-[32px] our-service-content">
           From planning and executing new construction to managing turn-key
           design-build projects or delivering complex renovations, we have
           unique, specialized and honed expertise to transform your ideas and
@@ -88,7 +136,7 @@ const OurServices = () => {
             {services?.map((service) => (
               <div
                 key={service?.id}
-                className="flex items-center gap-2 text-white text-lg font-medium"
+                className="flex items-center gap-2 text-white text-lg font-medium our-services-point"
               >
                 <div className="size-[6px] bg-white rounded-full" />
                 <div
@@ -104,12 +152,12 @@ const OurServices = () => {
               </div>
             ))}
 
-            <div className="mt-12">
+            <div className="mt-12 our-services-btn">
               <PrimaryButton title={'View our projects'} variant={'primary'} />
             </div>
           </div>
 
-          <div className="w-1/2 h-full our-services">
+          <div className="w-1/2 h-full our-services our-services-slides">
             <Swiper
               onSwiper={setSwiperInstance}
               slidesPerView={1}

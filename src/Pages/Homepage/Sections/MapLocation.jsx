@@ -1,3 +1,5 @@
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -56,7 +58,7 @@ const MapLocation = () => {
       const container = containerRef.current;
       if (container) {
         const tabWidth = container.offsetWidth / locations.length;
-        const newPosition = tabWidth * activeIndex + tabWidth / 2 - 55; // Center the marker
+        const newPosition = tabWidth * activeIndex + tabWidth / 2 - 25; // Center the marker
         setMarkerPosition(newPosition);
       }
     };
@@ -68,9 +70,56 @@ const MapLocation = () => {
     return () => window.removeEventListener('resize', calculateMarkerPosition);
   }, [activeIndex, locations.length]);
 
+  // GSAP Animations
+  useGSAP(() => {
+    gsap.fromTo(
+      '.map-location',
+      {
+        opacity: 0,
+        scale: 0.9,
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.map-location',
+          start: 'top 80%',
+        },
+      }
+    );
+
+    gsap.from('.map-marker', {
+      y: -20,
+      opacity: 0,
+      duration: 0.8,
+      ease: 'power2.out',
+    });
+
+    gsap.fromTo(
+      '.location-details',
+      {
+        opacity: 0,
+        y: 30,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        stagger: 0.3,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.map-location',
+          start: 'top 80%',
+        },
+      }
+    );
+  });
+
   return (
     <div
-      className="mt-16 relative transition-all duration-1000 ease-in-out bg-[#f4f8fb]"
+      className="mt-16 relative transition-all duration-1000 ease-in-out bg-[#f4f8fb] map-location"
       style={{
         backgroundImage: `url(${locations[activeIndex].image})`,
         backgroundSize: 'cover',
@@ -86,7 +135,7 @@ const MapLocation = () => {
       >
         {/* Active marker */}
         <div
-          className="absolute -top-[28px] transition-all duration-500 z-10"
+          className="absolute -top-[28px] map-marker transition-all duration-500 z-10"
           style={{
             left: `${markerPosition}px`,
           }}
@@ -107,7 +156,7 @@ const MapLocation = () => {
         </div>
 
         {/* Location details */}
-        <div className="w-full flex items-center justify-between">
+        <div className="w-full flex items-center justify-between location-details">
           {locations.map((location, index) => (
             <div
               key={index}

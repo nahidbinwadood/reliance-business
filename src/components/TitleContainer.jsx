@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import PrimaryButton from './buttons/PrimaryButton';
 import { PropTypes } from 'prop-types';
 
@@ -46,8 +47,7 @@ TitleContainer.propTypes = {
   titleColor: PropTypes.string,
   title: PropTypes.string,
   buttonText: PropTypes.string,
-  titleContainerBtnRef: PropTypes.string,
-  titleContainerTitleRef: PropTypes.string,
-  variant: PropTypes.oneOf(['primary', 'secondary']),
+
+  variant: PropTypes.string,
 };
 export default TitleContainer;

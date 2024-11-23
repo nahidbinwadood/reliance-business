@@ -1,5 +1,4 @@
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+ 
 import PropTypes from 'prop-types';
 import CountUp from 'react-countup';
 import { useInView } from 'react-intersection-observer';

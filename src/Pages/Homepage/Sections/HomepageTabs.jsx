@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import TabContents from '../../../components/TabContents';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const HomepageTabs = () => {
   const tabs = useMemo(
@@ -180,6 +182,7 @@ const HomepageTabs = () => {
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
 
   const tabRefs = useRef([]);
+  const homepageTabContainerRef=useRef(null)
 
   useEffect(() => {
     const activeIndex = tabs.findIndex((tab) => tab.title === activeTab.title);
@@ -191,8 +194,34 @@ const HomepageTabs = () => {
     }
   }, [activeTab, tabs]);
 
+  // gsap::
+
+  useGSAP(() => {
+    gsap.from('.homepage-tab', {
+      y: 20,
+      duration: 1,
+      ease: 'power2.out',
+      stagger: 0.2,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '.homepage-tab-container',
+        start: 'top 80%',
+      },
+    });
+    gsap.from('.homepage-tab-indicator', {
+      y: 2,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.homepage-tab-container',
+        start: 'top 80%',
+      },
+    });
+  });
+
   return (
-    <section className="mt-5 px-24 pb-14 w-full">
+    <section ref={homepageTabContainerRef} className="mt-5 px-24 pb-14 w-full homepage-tab-container">
       {/* Tabs */}
       <div className="relative w-full">
         <div className="flex items-center justify-center gap-14">
@@ -201,7 +230,7 @@ const HomepageTabs = () => {
               key={tab.title}
               ref={(el) => (tabRefs.current[index] = el)}
               onClick={() => setActiveTab(tab)}
-              className={`cursor-pointer text-lg pb-3  ${
+              className={`cursor-pointer homepage-tab text-lg pb-3  ${
                 activeTab === tab.title
                   ? 'font-semibold text-black'
                   : 'font-medium text-[#313131]'
@@ -214,7 +243,7 @@ const HomepageTabs = () => {
 
         {/* Dynamic Underline */}
         <div
-          className="absolute bottom-0 h-1 bg-textColor transition-all duration-300 rounded-md"
+          className="absolute bottom-0 homepage-tab-indicator h-1 bg-textColor transition-all duration-300 rounded-md"
           style={{
             left: `${underlineStyle.left}px`,
             width: `${underlineStyle.width}px`,
@@ -223,7 +252,7 @@ const HomepageTabs = () => {
       </div>
 
       {/* tab contents */}
-      <TabContents tab={activeTab} />
+      <TabContents homepageTabContainerRef={homepageTabContainerRef} tab={activeTab} />
     </section>
   );
 };

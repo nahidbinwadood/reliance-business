@@ -1,6 +1,13 @@
 const GoUp = () => {
+
+  const goToTop=()=>{
+    window.scrollTo({
+      top: 0,
+      behavior:'smooth'
+    });
+  }
   return (
-    <div className="pt-[250px] pb-20 bg-[#f4f8fb] flex w-full items-center justify-end px-24  cursor-pointer">
+    <div onClick={goToTop} className="pt-[250px] pb-20 bg-[#f4f8fb] flex w-full items-center justify-end px-24  cursor-pointer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="60"
