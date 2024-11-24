@@ -12,7 +12,7 @@ const Together = () => {
         trigger: '.title-together-container',
         start: 'top 80%',
         end: '+=300', // Animate over a longer scroll duration
-       // scrub: true, // Smooth animation during scroll
+        // scrub: true, // Smooth animation during scroll
       },
     });
 
@@ -21,7 +21,7 @@ const Together = () => {
         y: 20,
         duration: 1.5,
         opacity: 0,
-       // filter: 'blur(10px)',
+        // filter: 'blur(10px)',
         ease: 'power2.out',
       })
       .from(
@@ -70,25 +70,24 @@ const Together = () => {
       opacity: 0,
       duration: 0.8,
       ease: 'power2.out',
-      scrollTrigger:{
-      trigger: '.together-action-btn',
+      scrollTrigger: {
+        trigger: '.together-action-btn',
         start: 'top 80%',
         end: '+=300',
-
-      }
+      },
     });
   });
   return (
     <div className="mt-6 mb-10 title-together-container">
       {/* Title Section */}
-      <div className="px-24 together-title">
+      <div className="px-6 md:px-8 2xl:px-24 together-title">
         <TitleContainer
           highlightedText="BUILDING FUTURE SKYLINES"
           title="TOGETHER"
           borderColor="dark"
           titleColor="dark"
         />
-        <div className="mt-7 space-y-7 text-[#313131] leading-[24px] together-description">
+        <div className="mt-5 md:mt-7 space-y-4 md:space-y-5 lg:space-y-7 text-[#313131] leading-[24px] together-description">
           <p>
             Reliance undertakes a diverse range of projects – from high-rise
             office towers and luxury hotels to expansive shopping centers and
@@ -103,10 +102,10 @@ const Together = () => {
       </div>
 
       {/* Image Section */}
-      <div className="mx-24 mt-8 relative bg-primary/50 title-white-overlay rounded-md overflow-hidden">
-        <div className="w-full h-full max-h-[550px] title_circle_overlay_effect rounded-md overflow-hidden">
+      <div className="mx-5 md:mx-8 2xl:mx-24 mt-8 relative bg-primary/50 title-white-overlay rounded-md overflow-hidden">
+        <div className="w-full h-full  max-h-[400px] md:max-h-[500px] lg:max-h-[550px] title_circle_overlay_effect rounded-md overflow-hidden">
           <img
-            className="together-image w-full max-h-[550px] object-cover rounded-md overflow-hidden"
+            className="together-image w-full h-full max-h-[400px]  md:max-h-[500px] lg:max-h-[550px] object-cover rounded-md"
             src={persons}
             alt="Persons"
           />
@@ -114,7 +113,7 @@ const Together = () => {
       </div>
 
       {/* Button Section */}
-      <div className="mx-24 mt-8 together-action-btn">
+      <div className="px-6 md:px-8 2xl:px-24 mt-5 md:mt-8 together-action-btn">
         <PrimaryButton title="See Career Opportunities" variant="dark" />
       </div>
     </div>

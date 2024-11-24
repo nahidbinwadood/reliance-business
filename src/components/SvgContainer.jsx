@@ -3,7 +3,7 @@ export function DownArrowSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-     className="size-5 sm:size-6 lg:size-7 2xl:size-8"
+      className="size-5 sm:size-6 lg:size-7 2xl:size-8"
       viewBox="0 0 38 38"
       fill="none"
     >
@@ -44,8 +44,7 @@ export function LocationSvg() {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="28"
-      height="28"
+      className="size-5 md:size-6 lg:size-7"
       x="0"
       y="0"
       viewBox="0 0 512 512"
@@ -69,8 +68,7 @@ export function PersonSvg() {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="28"
-      height="28"
+      className="size-5 md:size-6 lg:size-7"
       x="0"
       y="0"
       viewBox="0 0 189.524 189.524"
@@ -96,8 +94,7 @@ export function ClockSvg() {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="28"
-      height="28"
+      className="size-5 md:size-6 lg:size-7"
       x="0"
       y="0"
       viewBox="0 0 512 512"
@@ -127,8 +124,7 @@ export function CheckSvg() {
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="28"
-      height="28"
+      className="size-5 md:size-6 lg:size-7"
       x="0"
       y="0"
       viewBox="0 0 682.667 682.667"
@@ -268,4 +264,3 @@ export function MapLocationBgSvg() {
     </svg>
   );
 }
-

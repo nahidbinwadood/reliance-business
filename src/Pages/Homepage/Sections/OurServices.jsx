@@ -112,7 +112,7 @@ const OurServices = () => {
   });
 
   return (
-    <div className="bg-bgPrimary py-16 px-24 our-service-container">
+    <div className="bg-bgPrimary py-5 sm:py-8 md:py-10 lg:py-16 px-5 md:px-8 2xl:px-24 our-service-container">
       {/* title */}
 
       <div>
@@ -123,7 +123,7 @@ const OurServices = () => {
             borderColor="light"
           />
         </div>
-        <p className="mt-8 text-white w-4/5 leading-[32px] our-service-content">
+        <p className="mt-5 md:mt-7 lg:mt-8 text-white md:w-4/5 leading-[32px] our-service-content">
           From planning and executing new construction to managing turn-key
           design-build projects or delivering complex renovations, we have
           unique, specialized and honed expertise to transform your ideas and
@@ -131,17 +131,17 @@ const OurServices = () => {
         </p>
 
         {/* sliders */}
-        <div className="flex w-full mt-12">
-          <div className="w-1/2 flex flex-col gap-3">
+        <div className="flex flex-col md:flex-row gap-12 w-full mt-6 md:mt-10 lg:mt-12">
+          <div className="md:w-1/2 flex flex-col gap-3">
             {services?.map((service) => (
               <div
                 key={service?.id}
-                className="flex items-center gap-2 text-white text-lg font-medium our-services-point"
+                className="flex items-center gap-2 text-white md:text-lg font-medium our-services-point"
               >
                 <div className="size-[6px] bg-white rounded-full" />
                 <div
                   onClick={() => handleTabChange(service)}
-                  className={`cursor-pointer ${
+                  className={` cursor-pointer ${
                     activeTab.title === service?.title
                       ? 'text-[#4096FA]'
                       : 'text-white'
@@ -152,12 +152,12 @@ const OurServices = () => {
               </div>
             ))}
 
-            <div className="mt-12 our-services-btn">
+            <div className="mt-3 md:mt-8 lg:mt-12 our-services-btn">
               <PrimaryButton title={'View our projects'} variant={'primary'} />
             </div>
           </div>
 
-          <div className="w-1/2 h-full our-services our-services-slides">
+          <div className="w-full md:w-1/2 h-full our-services our-services-slides">
             <Swiper
               onSwiper={setSwiperInstance}
               slidesPerView={1}
@@ -168,7 +168,7 @@ const OurServices = () => {
                 delay: 2500,
                 disableOnInteraction: false,
               }}
-              spaceBetween={30}
+              spaceBetween={20} // Adjust spacing for smaller screens
               loop={true}
               pagination={{
                 clickable: true,
@@ -179,12 +179,12 @@ const OurServices = () => {
             >
               {services?.map((service) => (
                 <SwiperSlide key={service?.id}>
-                  <div className=" h-[450px]  relative p-3">
-                    <div className="size-32 bg-[#479BEB] absolute top-0 right-0 -z-10 rounded-lg"></div>
+                  <div className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] relative p-2 md:p-3">
+                    <div className="size-20 md:size-28 lg:size-32 bg-[#479BEB] absolute top-0 right-0 -z-10 rounded-md md:rounded-lg"></div>
                     <img
                       className="w-full h-full object-cover rounded-lg"
                       src={service?.image}
-                      alt=""
+                      alt={service?.name || 'Service'}
                     />
                   </div>
                 </SwiperSlide>
