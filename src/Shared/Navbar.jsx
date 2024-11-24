@@ -46,7 +46,7 @@ const Navbar = () => {
   // });
 
   return (
-    <div className="px-12 relative w-full h-[90vh] border-b border-r border-primary">
+    <div className="lg:px-12 relative w-full h-[80vh] lg:h-[90vh] border-b border-r border-primary">
       {/* Background Video */}
       <HeroBg />
 

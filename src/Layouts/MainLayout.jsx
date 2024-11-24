@@ -12,7 +12,7 @@ const MainLayout = () => {
   return (
     <ReactLenis root>
       <Navbar />
-      <div>
+      <div className='hidden'>
         <Outlet />
       </div>
       <Footer />
