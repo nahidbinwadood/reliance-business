@@ -153,7 +153,7 @@ const AboutUs = () => {
   return (
     <section
       ref={aboutUsSectionRef}
-      className="bg-bgPrimary pt-24 px-24 pb-14 w-full about-section-container"
+      className="bg-bgPrimary pt-16 lg:pt-24 px-5 md:px-8 2xl:px-24 pb-14 w-full about-section-container"
     >
       <div>
         <TitleContainer
@@ -168,7 +168,7 @@ const AboutUs = () => {
       </div>
 
       {/* cards */}
-      <div className="mt-10 grid grid-cols-3 about-us-cards-container">
+      <div className="mt-10 grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-3 about-us-cards-container">
         {aboutUsInfo?.map((info, index) => (
           <AboutCard key={info?.highlightedText} info={info} index={index} />
         ))}
@@ -177,42 +177,42 @@ const AboutUs = () => {
       {/* Counts */}
 
       <div className="relative mt-20 h-full circle_overlay_container bg-blue-100/40">
-        <div className="  p-2 h-full circle_overlay_effect">
-          {/* Box Shape */}
-          <div className="absolute top-0 left-0 w-32 h-32 bg-textColor -translate-x-3 -translate-y-3 z-10"></div>
+  <div className="p-2 h-full circle_overlay_effect">
+    {/* Box Shape */}
+    <div className="absolute top-0 left-0 w-20 h-20 md:w-32 md:h-32 bg-textColor -translate-x-2 -translate-y-2 md:-translate-x-3 md:-translate-y-3 z-10"></div>
 
-          {/* logo */}
+    {/* Logo */}
+    <div className="absolute top-10 right-10 md:top-20 md:right-20 font-poppins border-2 border-white px-3 py-2 md:px-5 md:py-3 z-30 text-white text-base md:text-xl font-semibold">
+      <p>reliance</p>
+    </div>
 
-          <div className="absolute top-20 right-20 font-poppins border-2 border-white px-5 py-3 z-30 text-white text-xl font-semibold">
-            <p>reliance</p>
-          </div>
+    {/* Background Image Container */}
+    <div
+      className="min-h-[500px] md:min-h-[750px] rounded-b-[20px] md:rounded-b-[30px] bg-no-repeat bg-center bg-cover overflow-hidden relative z-50"
+      style={{
+        backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${aboutBanner})`,
+      }}
+    >
+      {/* Overlay */}
+      <div className="absolute w-full h-full bg-blue-400 z-50 hidden"></div>
 
-          {/* Background Image Container */}
-
-          <div
-            className="min-h-[750px]  rounded-b-[30px] bg-no-repeat bg-center bg-cover overflow-hidden relative z-50 "
-            style={{
-              backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${aboutBanner})`,
-            }}
-          >
-            {/* overlay */}
-            <div className="absolute w-full h-full bg-blue-400 z-50 hidden"></div>
-            {/* Content */}
-            <div className="h-[750px] flex items-end justify-center py-20 px-20 relative z-20">
-              {/* content cards */}
-              <div className="w-full grid grid-cols-4 gap-10">
-                {contentsCardInfo?.map((info, index) => (
-                  <AboutContentCard
-                    aboutCounterRef={(el) => (countersRefs.current[index] = el)}
-                    info={info}
-                    key={info?.title}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+      {/* Content */}
+      <div className="h-[500px] md:h-[750px] flex items-end justify-center py-10 px-5 md:py-20 md:px-20 relative z-20">
+        {/* Content Cards */}
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-10">
+          {contentsCardInfo?.map((info, index) => (
+            <AboutContentCard
+              aboutCounterRef={(el) => (countersRefs.current[index] = el)}
+              info={info}
+              key={info?.title}
+            />
+          ))}
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
     </section>
   );
 };

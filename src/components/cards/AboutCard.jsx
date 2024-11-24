@@ -4,11 +4,13 @@ const AboutCard = ({ info, index }) => {
   return (
     <div
       key={info?.highlightedText}
-      className={`about-card ${
-        index == 1 ? 'px-16 py-8 border-x border-white/25' : 'px-16 py-8'
-      } ${index == 0 ? 'pl-0 pr-16' : ''} ${index == 2 ? 'pr-0 pl-16' : ''}`}
+      className={`about-card  ${
+        index == 1 ? 'md:px-8 lg:px-16 md:border-x border-white/25' : ''
+      } ${index == 0 ? ' lg:pl-0 md:pr-8 lg:pr-16' : ''} ${
+        index == 2 ? 'lg:pr-0 md:pl-8 lg:pl-16' : ''
+      }`}
     >
-      <p className={`text-lg font-semibold text-textColor`}>
+      <p className={`text-base lg:text-lg font-semibold text-textColor`}>
         {info?.highlightedText}
         <span className="text-white ml-2">{info?.description}</span>
       </p>

@@ -9,7 +9,7 @@ const Homepage = () => {
   return (
     <>
       <AboutUs />
-      <HomepageTabs />
+       <HomepageTabs />  
       <OurServices />
       <Together />
       <MapLocation />

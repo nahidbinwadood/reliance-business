@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
 import { ButtonUpArrowSvg } from '../SvgContainer';
- 
+
 
 const PrimaryButton = ({ title, variant }) => {
   return (
     <Link
       to="/"
       href="#_"
-      className="relative inline-block px-6 py-3 font-medium group rounded-md font-poppins"
+      className="relative inline-block px-6 py-2.5 text-sm lg:text-base lg:py-3 font-medium group rounded-md font-poppins"
     >
       <span
         className={`absolute inset-0 w-full h-full transition duration-300 ease-out transform translate-x-2 translate-y-2 group-hover:-translate-x-0 group-hover:-translate-y-0 rounded-md bg-textColor`}
