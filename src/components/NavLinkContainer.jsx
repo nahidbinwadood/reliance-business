@@ -45,7 +45,7 @@ const NavLinkContainer = ({ navLinks }) => {
         <ul className="flex items-center justify-between gap-10 font-poppins font-semibold navbar-contents">
           {navLinks?.map((link) => (
             <li key={link?.path} className="nav_links">
-              <NavLink to={link?.path}>{link?.title}</NavLink>
+              <NavLink to={'/'}>{link?.title}</NavLink>
             </li>
           ))}
         </ul>
