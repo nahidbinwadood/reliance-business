@@ -42,42 +42,53 @@ const MapLocation = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
   const [markerPosition, setMarkerPosition] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Rotate tabs every 3 seconds
+  // Check for mobile view
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % locations.length);
-    }, 3000);
-
-    return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, [locations.length]);
-
-  // Recalculate marker position whenever the active tab changes or container resizes
-  useEffect(() => {
-    const calculateMarkerPosition = () => {
-      const container = containerRef.current;
-      if (container) {
-        const tabWidth = container.offsetWidth / locations.length;
-        const newPosition = tabWidth * activeIndex + tabWidth / 2 - 25; // Center the marker
-        setMarkerPosition(newPosition);
-      }
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
     };
 
-    calculateMarkerPosition();
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    // Recalculate on window resize
-    window.addEventListener('resize', calculateMarkerPosition);
-    return () => window.removeEventListener('resize', calculateMarkerPosition);
-  }, [activeIndex, locations.length]);
+  // Rotate tabs every 3 seconds (only on desktop)
+  useEffect(() => {
+    if (!isMobile) {
+      const interval = setInterval(() => {
+        setActiveIndex((prevIndex) => (prevIndex + 1) % locations.length);
+      }, 3000);
+
+      return () => clearInterval(interval);
+    }
+  }, [locations.length, isMobile]);
+
+  // Calculate marker position for desktop
+  useEffect(() => {
+    if (!isMobile) {
+      const calculateMarkerPosition = () => {
+        const container = containerRef.current;
+        if (container) {
+          const tabWidth = container.offsetWidth / locations.length;
+          const newPosition = tabWidth * activeIndex + tabWidth / 2 - 25;
+          setMarkerPosition(newPosition);
+        }
+      };
+
+      calculateMarkerPosition();
+      window.addEventListener('resize', calculateMarkerPosition);
+      return () => window.removeEventListener('resize', calculateMarkerPosition);
+    }
+  }, [activeIndex, locations.length, isMobile]);
 
   // GSAP Animations
   useGSAP(() => {
     gsap.fromTo(
       '.map-location',
-      {
-        opacity: 0,
-        scale: 0.9,
-      },
+      { opacity: 0, scale: 0.9 },
       {
         opacity: 1,
         scale: 1,
@@ -90,32 +101,15 @@ const MapLocation = () => {
       }
     );
 
-    gsap.from('.map-marker', {
-      y: -20,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out',
-    });
-
-    gsap.fromTo(
-      '.location-details',
-      {
+    if (!isMobile) {
+      gsap.from('.map-marker', {
+        y: -20,
         opacity: 0,
-        y: 30,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        stagger: 0.3,
+        duration: 0.8,
         ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.map-location',
-          start: 'top 80%',
-        },
-      }
-    );
-  });
+      });
+    }
+  }, [isMobile]);
 
   return (
     <div
@@ -126,46 +120,63 @@ const MapLocation = () => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         width: '100%',
-        height: '400px',
+        height: isMobile ? '500px' : '400px',
       }}
     >
       <div
         ref={containerRef}
-        className="w-full -bottom-[200px] left-1/2 transform -translate-x-1/2 bg-white border-textColor max-w-[1280px] h-full max-h-[400px] shadow-lg border rounded-2xl flex px-12 py-20 relative"
+        className={`w-full left-1/2 transform -translate-x-1/2 bg-white border-textColor max-w-[1280px] shadow-lg border rounded-2xl relative ${
+          isMobile
+            ? 'px-4 py-6 mx-auto mt-8 h-auto'
+            : '-bottom-[200px] h-full max-h-[400px] px-12 py-20'
+        }`}
       >
-        {/* Active marker */}
-        <div
-          className="absolute -top-[28px] map-marker transition-all duration-500 z-10"
-          style={{
-            left: `${markerPosition}px`,
-          }}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="50"
-            height="29"
-            viewBox="0 0 50 29"
-            fill="white"
+        {/* Marker SVG - Only show on desktop */}
+        {!isMobile && (
+          <div
+            className="absolute -top-[28px] map-marker transition-all duration-500 z-10"
+            style={{ left: `${markerPosition}px` }}
           >
-            <path d="M12 26H38.5L49.5 29H2.5L12 26Z" fill="white" />
-            <path
-              d="M0 27.5C8 27.5 17.1688 27.8044 21 18.5C24.5 10 25.5 4 26 2C27.5 7.5 30.5 18 31.7056 20C32.9963 22.1411 37.2056 28.5 49.2056 27.5"
-              stroke="#4096FA"
-            />
-          </svg>
-        </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50"
+              height="29"
+              viewBox="0 0 50 29"
+              fill="white"
+            >
+              <path d="M12 26H38.5L49.5 29H2.5L12 26Z" fill="white" />
+              <path
+                d="M0 27.5C8 27.5 17.1688 27.8044 21 18.5C24.5 10 25.5 4 26 2C27.5 7.5 30.5 18 31.7056 20C32.9963 22.1411 37.2056 28.5 49.2056 27.5"
+                stroke="#4096FA"
+              />
+            </svg>
+          </div>
+        )}
 
         {/* Location details */}
-        <div className="w-full flex items-center justify-between location-details">
+        <div className={`w-full location-details ${
+          isMobile
+            ? 'flex flex-col space-y-8'
+            : 'flex items-center justify-between'
+        }`}>
           {locations.map((location, index) => (
             <div
               key={index}
-              className={`text-center px-16 transition-all duration-500 ${
-                activeIndex === index ? 'scale-105' : 'scale-100 opacity-70'
+              className={`transition-all duration-500 ${
+                isMobile
+                  ? 'text-left px-4 py-4 border-b last:border-b-0'
+                  : 'text-center px-16'
+              } ${
+                activeIndex === index
+                  ? 'scale-105'
+                  : 'scale-100 opacity-70'
               }`}
+              onClick={() => setActiveIndex(index)}
             >
               <h3
-                className={`font-poppins font-bold text-xl transition-all duration-500 ${
+                className={`font-poppins font-bold ${
+                  isMobile ? 'text-lg' : 'text-xl'
+                } transition-all duration-500 ${
                   activeIndex === index
                     ? 'text-textColor'
                     : 'text-[#666565] hover:text-textColor'
@@ -175,7 +186,9 @@ const MapLocation = () => {
               </h3>
 
               <div
-                className={`mt-2 space-y-1 transition-all duration-500 ${
+                className={`${
+                  isMobile ? 'mt-1' : 'mt-2'
+                } space-y-1 transition-all duration-500 ${
                   activeIndex === index
                     ? 'text-black'
                     : 'text-[#999DA2] hover:text-black'

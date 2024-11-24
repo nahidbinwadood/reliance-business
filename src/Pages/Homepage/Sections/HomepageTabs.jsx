@@ -182,7 +182,7 @@ const HomepageTabs = () => {
   const [underlineStyle, setUnderlineStyle] = useState({ left: 0, width: 0 });
 
   const tabRefs = useRef([]);
-  const homepageTabContainerRef=useRef(null)
+  const homepageTabContainerRef = useRef(null);
 
   useEffect(() => {
     const activeIndex = tabs.findIndex((tab) => tab.title === activeTab.title);
@@ -221,16 +221,19 @@ const HomepageTabs = () => {
   });
 
   return (
-    <section ref={homepageTabContainerRef} className="mt-5 px-24 pb-14 w-full homepage-tab-container">
+    <section
+      ref={homepageTabContainerRef}
+      className="mt-5 px-5 md:px-8 2xl:px-24 pb-14 w-full homepage-tab-container"
+    >
       {/* Tabs */}
       <div className="relative w-full">
-        <div className="flex items-center justify-center gap-14">
+        <div className="flex items-center justify-start md:justify-center gap-4 sm:gap-8 md:gap-14 overflow-x-auto">
           {tabs.map((tab, index) => (
             <div
               key={tab.title}
               ref={(el) => (tabRefs.current[index] = el)}
               onClick={() => setActiveTab(tab)}
-              className={`cursor-pointer homepage-tab text-lg pb-3  ${
+              className={`cursor-pointer homepage-tab text-sm sm:text-base md:text-lg pb-3 whitespace-nowrap ${
                 activeTab === tab.title
                   ? 'font-semibold text-black'
                   : 'font-medium text-[#313131]'
@@ -251,8 +254,11 @@ const HomepageTabs = () => {
         />
       </div>
 
-      {/* tab contents */}
-      <TabContents homepageTabContainerRef={homepageTabContainerRef} tab={activeTab} />
+      {/* Tab contents */}
+      <TabContents
+        homepageTabContainerRef={homepageTabContainerRef}
+        tab={activeTab}
+      />
     </section>
   );
 };
