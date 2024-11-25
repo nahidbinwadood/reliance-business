@@ -42,33 +42,38 @@ const MapLocation = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const containerRef = useRef(null);
   const [markerPosition, setMarkerPosition] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [screenSize, setScreenSize] = useState('large');
 
-  // Check for mobile view
+  // Screen size detection
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+    const checkScreenSize = () => {
+      if (window.innerWidth < 640) {
+        setScreenSize('small');
+      } else if (window.innerWidth < 1024) {
+        setScreenSize('medium');
+      } else {
+        setScreenSize('large');
+      }
     };
 
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Rotate tabs every 3 seconds (only on desktop)
+  // Auto-rotate tabs (only on large screens)
   useEffect(() => {
-    if (!isMobile) {
+    if (screenSize === 'large') {
       const interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % locations.length);
       }, 3000);
-
       return () => clearInterval(interval);
     }
-  }, [locations.length, isMobile]);
+  }, [locations.length, screenSize]);
 
-  // Calculate marker position for desktop
+  // Marker position calculation (only on large screens)
   useEffect(() => {
-    if (!isMobile) {
+    if (screenSize === 'large') {
       const calculateMarkerPosition = () => {
         const container = containerRef.current;
         if (container) {
@@ -82,16 +87,16 @@ const MapLocation = () => {
       window.addEventListener('resize', calculateMarkerPosition);
       return () => window.removeEventListener('resize', calculateMarkerPosition);
     }
-  }, [activeIndex, locations.length, isMobile]);
+  }, [activeIndex, locations.length, screenSize]);
 
   // GSAP Animations
   useGSAP(() => {
     gsap.fromTo(
       '.map-location',
-      { opacity: 0, scale: 0.9 },
+      { opacity: 0, y: 20 },
       {
         opacity: 1,
-        scale: 1,
+        y: 0,
         duration: 1,
         ease: 'power2.out',
         scrollTrigger: {
@@ -101,7 +106,24 @@ const MapLocation = () => {
       }
     );
 
-    if (!isMobile) {
+    // Animate location cards
+    gsap.fromTo(
+      '.location-card',
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.location-details',
+          start: 'top 80%',
+        },
+      }
+    );
+
+    if (screenSize === 'large') {
       gsap.from('.map-marker', {
         y: -20,
         opacity: 0,
@@ -109,30 +131,32 @@ const MapLocation = () => {
         ease: 'power2.out',
       });
     }
-  }, [isMobile]);
+  }, [screenSize]);
 
   return (
-    <div
-      className="mt-16 relative transition-all duration-1000 ease-in-out bg-[#f4f8fb] map-location"
-      style={{
-        backgroundImage: `url(${locations[activeIndex].image})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        width: '100%',
-        height: isMobile ? '500px' : '400px',
-      }}
-    >
+    <div className="map-location">
+      {/* Background Map */}
+      <div
+        className="w-full transition-all duration-1000 ease-in-out bg-[#f4f8fb]"
+        style={{
+          backgroundImage: `url(${locations[activeIndex].image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          height: screenSize === 'small' ? '500px' : '400px',
+        }}
+      />
+
+      {/* Locations Container */}
       <div
         ref={containerRef}
-        className={`w-full left-1/2 transform -translate-x-1/2 bg-white border-textColor max-w-[1280px] shadow-lg border rounded-2xl relative ${
-          isMobile
-            ? 'px-4 py-6 mx-auto mt-8 h-auto'
-            : '-bottom-[200px] h-full max-h-[400px] px-12 py-20'
-        }`}
+        className={`max-w-[1280px] mx-5 md:mx-8 2xl:mx-auto bg-white shadow-lg rounded-2xl relative border border-textColor
+          ${screenSize === 'small' ? 'mt-8' : '-mt-[200px]'}
+          ${screenSize === 'medium' ? 'px-6 py-8' : screenSize === 'large' ? 'px-12 py-20' : 'px-4 py-6'}
+        `}
       >
-        {/* Marker SVG - Only show on desktop */}
-        {!isMobile && (
+        {/* Marker - Only for large screens */}
+        {screenSize === 'large' && (
           <div
             className="absolute -top-[28px] map-marker transition-all duration-500 z-10"
             style={{ left: `${markerPosition}px` }}
@@ -153,60 +177,45 @@ const MapLocation = () => {
           </div>
         )}
 
-        {/* Location details */}
-        <div className={`w-full location-details ${
-          isMobile
-            ? 'flex flex-col space-y-8'
-            : 'flex items-center justify-between'
-        }`}>
+        {/* Location Cards */}
+        <div
+          className={`location-details w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4`}
+        >
           {locations.map((location, index) => (
             <div
               key={index}
-              className={`transition-all duration-500 ${
-                isMobile
-                  ? 'text-left px-4 py-4 border-b last:border-b-0'
-                  : 'text-center px-16'
-              } ${
-                activeIndex === index
-                  ? 'scale-105'
-                  : 'scale-100 opacity-70'
-              }`}
+              className={`p-5 location-card transition-all duration-500 text-center ${index==2? "md:col-span-2 lg:col-span-1" : ""} ${
+                screenSize === 'small' ? 'border-b-none' : 'px-4 py-4'
+              } ${screenSize === 'large' && activeIndex === index ? 'scale-105' : 'scale-100'} ${
+                activeIndex !== index ? 'opacity-70' : 'opacity-100'
+              } cursor-pointer rounded-lg`}
               onClick={() => setActiveIndex(index)}
             >
               <h3
-                className={`font-poppins font-bold ${
-                  isMobile ? 'text-lg' : 'text-xl'
-                } transition-all duration-500 ${
-                  activeIndex === index
-                    ? 'text-textColor'
-                    : 'text-[#666565] hover:text-textColor'
-                }`}
+                className={`font-poppins font-bold pb-3 ${
+                  screenSize === 'small' ? 'text-lg' : screenSize === 'medium' ? 'text-xl' : 'text-2xl'
+                } ${activeIndex === index ? 'text-textColor' : 'text-[#666565]'}`}
               >
                 {location.locationTitle}
               </h3>
-
               <div
-                className={`${
-                  isMobile ? 'mt-1' : 'mt-2'
-                } space-y-1 transition-all duration-500 ${
-                  activeIndex === index
-                    ? 'text-black'
-                    : 'text-[#999DA2] hover:text-black'
+                className={`space-y-1 transition-all duration-500 ${
+                  activeIndex === index ? 'text-black' : 'text-[#999DA2]'
                 }`}
               >
-                <p>{location.officeName}</p>
-                <p>{location.officeLocation}</p>
-                <p>{location.city}</p>
-                <p>{location.houseNumber}</p>
-                <Link to={`tel:${location.telephoneNumber}`} className="block">
+                <p className="text-sm lg:text-base">{location.officeName}</p>
+                <p className="text-sm lg:text-base">{location.officeLocation}</p>
+                <p className="text-sm lg:text-base">{location.city}</p>
+                <p className="text-sm lg:text-base">{location.houseNumber}</p>
+                <Link to={`tel:${location.telephoneNumber}`} className="block text-sm md:text-base">
                   T: {location.telephoneNumber}
                 </Link>
                 {location.phoneNumber && (
-                  <Link to={`tel:${location.phoneNumber}`} className="block">
+                  <Link to={`tel:${location.phoneNumber}`} className="block text-sm md:text-base">
                     T: {location.phoneNumber}
                   </Link>
                 )}
-                <Link to={`mailto:${location.email}`} className="block">
+                <Link to={`mailto:${location.email}`} className="block text-sm md:text-base">
                   {location.email}
                 </Link>
               </div>

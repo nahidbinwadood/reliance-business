@@ -7,11 +7,10 @@ const GoUp = () => {
     });
   }
   return (
-    <div onClick={goToTop} className="pt-[250px] pb-20 bg-[#f4f8fb] flex w-full items-center justify-end px-24  cursor-pointer">
+    <div onClick={goToTop} className="pt-10 2xl:pt-[250px] pb-10 2xl:pb-20 bg-[#f4f8fb] flex w-full items-center justify-end px-5 md:px-8 lg:px-12 2xl:px-24  cursor-pointer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="60"
-        height="60"
+       className="size-10 md:size-12 lg:size-14"
         viewBox="0 0 60 60"
         fill="none"
       >
