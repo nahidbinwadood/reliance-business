@@ -31,6 +31,7 @@ const Navbar = () => {
     },
   ];
 
+
   // const navbarRef = useRef(null);
   // const heroTitleRef = useRef(null);
   // const heroBtnRef = useRef(null);
