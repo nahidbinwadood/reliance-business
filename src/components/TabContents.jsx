@@ -22,7 +22,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
     timeline.current = gsap.timeline({
       scrollTrigger: {
         trigger: homepageTabContainerRef.current,
-        start: 'top 70%',
+        start: 'top 85%',
         toggleActions: 'play none none reset',
       },
     });
@@ -41,15 +41,15 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
 
     timeline.current
       .from('.tab-container', {
-        x: 100,
-        duration: 0.45,
+        x: 10,
+        duration: 0.5,
         opacity: 0,
         stagger: 0.2,
         ease: 'power2.out',
       })
       .from('.slider-container', {
         y: 20,
-        duration: 0.5,
+        duration: 0.6,
         opacity: 0,
         stagger: 0.2,
         ease: 'power2.out',
@@ -60,10 +60,10 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
           x: -50,
           duration: 0.5,
           opacity: 0,
-          stagger: 0.3,
+          stagger: 0.2,
           ease: 'power2.out',
         },
-        '-=0.8'
+        '-=0.4'
       )
       .from(
         '.homepage-tab-link',
