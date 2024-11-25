@@ -13,6 +13,12 @@ const LeftSlider = ({ leftSliderImages }) => {
       ...leftSliderImages,
       ...leftSliderImages,
       ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
+      ...leftSliderImages,
     ]);
   }, [leftSliderImages]);
 
