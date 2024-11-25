@@ -59,7 +59,7 @@ const contentsCardInfo = [
 ];
 
 const AboutUs = () => {
-  gsap.registerPlugin(useGSAP,ScrollTrigger);
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
   const aboutUsSectionRef = useRef(null);
   const titleContainerTitleRef = useRef(null);
   const titleContainerBtnRef = useRef(null);
@@ -101,18 +101,17 @@ const AboutUs = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.circle_overlay_container',
-        start: 'top 100%',
+        start: 'top 90%',
       },
     });
 
     // Step 1: Scale the white container (first animation)
     tl.from('.circle_overlay_container', {
-      scale: 0.2,
-      duration: 0.8,
+      scale: 0.5,
+      duration: 1.2,
       ease: 'power2.out',
     });
 
-    // Step 2: Start the clip-path animation for the image container (second animation)
     tl.from(
       '.circle_overlay_effect',
       {
@@ -120,10 +119,9 @@ const AboutUs = () => {
         duration: 1.2,
         ease: 'power2.out',
       },
-      0.2 // Start 0.5 seconds after the first animation begins
+      0.1
     );
 
-    // Step 3: Background transparency animation (third animation)
     tl.to(
       '.circle_overlay_container',
       {
@@ -131,8 +129,10 @@ const AboutUs = () => {
         duration: 0.5,
         ease: 'power2.out',
       },
-      0.5 // Start immediately after the first animation ends
+      0.8
     );
+
+
 
     countersRefs.current.forEach((ref) => {
       gsap.from(ref, {
@@ -142,7 +142,7 @@ const AboutUs = () => {
         },
         y: 20,
         opacity: 0,
-        duration: 1,
+        duration: 0.5,
         stagger: 0.3,
         onStart: () => {
           ref.dataset.inView = true; // Mark as in view
@@ -198,7 +198,7 @@ const AboutUs = () => {
             <div className="absolute w-full h-full bg-blue-400 z-50 hidden"></div>
 
             {/* Content */}
-            <div className="h-fit xl:h-[600px] 2xl:h-[750px] flex items-end justify-center py-10 px-5 md:py-20 md:px-20 relative z-20">
+            <div className="h-fit xl:h-[600px] about-card-contents 2xl:h-[750px] flex items-end justify-center py-10 px-5 md:py-20 md:px-20 relative z-20">
               {/* Content Cards */}
               <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
                 {contentsCardInfo?.map((info, index) => (
