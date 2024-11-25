@@ -2,8 +2,9 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const MapLocation = () => {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
   const locations = [
     {
       locationTitle: 'Montreal',
@@ -113,12 +114,12 @@ const MapLocation = () => {
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.5,
         stagger: 0.2,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.location-details',
-          start: 'top 80%',
+          start: 'top 90%',
         },
       }
     );
@@ -150,7 +151,7 @@ const MapLocation = () => {
       {/* Locations Container */}
       <div
         ref={containerRef}
-        className={`max-w-[1280px] mx-5 md:mx-8 2xl:mx-auto bg-white shadow-lg rounded-2xl relative border border-textColor
+        className={`max-w-[1280px] mx-5 md:mx-8 lg:mx-12 xl:mx-auto bg-white shadow-lg rounded-2xl relative border border-textColor
           ${screenSize === 'small' ? 'mt-8' : '-mt-[200px]'}
           ${screenSize === 'medium' ? 'px-6 py-8' : screenSize === 'large' ? 'px-12 py-20' : 'px-4 py-6'}
         `}
@@ -192,9 +193,7 @@ const MapLocation = () => {
               onClick={() => setActiveIndex(index)}
             >
               <h3
-                className={`font-poppins font-bold pb-3 ${
-                  screenSize === 'small' ? 'text-lg' : screenSize === 'medium' ? 'text-xl' : 'text-2xl'
-                } ${activeIndex === index ? 'text-textColor' : 'text-[#666565]'}`}
+                className={`font-poppins font-bold pb-3 text-lg md:text-xl lg:text-2xl ${activeIndex === index ? 'text-textColor' : 'text-[#666565]'}`}
               >
                 {location.locationTitle}
               </h3>
