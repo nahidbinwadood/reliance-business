@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import TabContents from '../../../components/TabContents';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 
 const HomepageTabs = () => {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
   const tabs = useMemo(
     () => [
       {

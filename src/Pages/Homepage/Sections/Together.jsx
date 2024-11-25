@@ -3,8 +3,10 @@ import persons from '../../../assets/images/persons.png';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const Together = () => {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
   // GSAP Animations
   useGSAP(() => {
     const timeline = gsap.timeline({

@@ -59,6 +59,7 @@ const contentsCardInfo = [
 ];
 
 const AboutUs = () => {
+  gsap.registerPlugin(useGSAP,ScrollTrigger);
   const aboutUsSectionRef = useRef(null);
   const titleContainerTitleRef = useRef(null);
   const titleContainerBtnRef = useRef(null);
