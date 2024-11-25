@@ -12,7 +12,7 @@ const Together = () => {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: '.title-together-container',
-        start: 'top 80%',
+        start: 'top 90%',
         end: '+=300', // Animate over a longer scroll duration
         // scrub: true, // Smooth animation during scroll
       },
@@ -21,7 +21,7 @@ const Together = () => {
     timeline
       .from('.together-title', {
         y: 20,
-        duration: 1.5,
+        duration: 0.8,
         opacity: 0,
         // filter: 'blur(10px)',
         ease: 'power2.out',
@@ -30,12 +30,12 @@ const Together = () => {
         '.together-description p',
         {
           y: 20,
-          duration: 1,
+          duration: 0.8,
           opacity: 0,
-          stagger: 0.3,
+          stagger: 0.2,
           ease: 'power2.out',
         },
-        '-=0.5' // Overlap animations slightly
+        '-=0.2' // Overlap animations slightly
       );
   });
 
@@ -43,14 +43,14 @@ const Together = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.title-white-overlay',
-        start: 'top 80%',
+        start: 'top 90%',
       },
     });
 
     // Step 1: Scale the white container (first animation)
     tl.from('.title-white-overlay', {
       scale: 0.2,
-      duration: 1,
+      duration: 0.8,
       ease: 'power2.out',
     });
 
@@ -59,7 +59,7 @@ const Together = () => {
       '.title_circle_overlay_effect',
       {
         clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)',
-        duration: 2,
+        duration: 1,
         ease: 'power2.out',
       },
       0.1
@@ -70,7 +70,7 @@ const Together = () => {
     gsap.from('.together-action-btn', {
       x: -20,
       opacity: 0,
-      duration: 0.8,
+      duration: 0.5,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: '.together-action-btn',

@@ -86,7 +86,8 @@ const MapLocation = () => {
 
       calculateMarkerPosition();
       window.addEventListener('resize', calculateMarkerPosition);
-      return () => window.removeEventListener('resize', calculateMarkerPosition);
+      return () =>
+        window.removeEventListener('resize', calculateMarkerPosition);
     }
   }, [activeIndex, locations.length, screenSize]);
 
@@ -98,11 +99,11 @@ const MapLocation = () => {
       {
         opacity: 1,
         y: 0,
-        duration: 1,
+        duration: 0.5,
         ease: 'power2.out',
         scrollTrigger: {
           trigger: '.map-location',
-          start: 'top 80%',
+          start: 'top 90%',
         },
       }
     );
@@ -153,7 +154,13 @@ const MapLocation = () => {
         ref={containerRef}
         className={`max-w-[1280px] mx-5 md:mx-8 lg:mx-12 xl:mx-auto bg-white shadow-lg rounded-2xl relative border border-textColor
           ${screenSize === 'small' ? 'mt-8' : '-mt-[200px]'}
-          ${screenSize === 'medium' ? 'px-6 py-8' : screenSize === 'large' ? 'px-12 py-20' : 'px-4 py-6'}
+          ${
+            screenSize === 'medium'
+              ? 'px-6 py-8'
+              : screenSize === 'large'
+              ? 'px-12 py-20'
+              : 'px-4 py-6'
+          }
         `}
       >
         {/* Marker - Only for large screens */}
@@ -185,15 +192,21 @@ const MapLocation = () => {
           {locations.map((location, index) => (
             <div
               key={index}
-              className={`p-5 location-card transition-all duration-500 text-center ${index==2? "md:col-span-2 lg:col-span-1" : ""} ${
-                screenSize === 'small' ? 'border-b-none' : 'px-4 py-4'
-              } ${screenSize === 'large' && activeIndex === index ? 'scale-105' : 'scale-100'} ${
+              className={`p-5 location-card transition-all duration-500 text-center ${
+                index == 2 ? 'md:col-span-2 lg:col-span-1' : ''
+              } ${screenSize === 'small' ? 'border-b-none' : 'px-4 py-4'} ${
+                screenSize === 'large' && activeIndex === index
+                  ? 'scale-105'
+                  : 'scale-100'
+              } ${
                 activeIndex !== index ? 'opacity-70' : 'opacity-100'
               } cursor-pointer rounded-lg`}
               onClick={() => setActiveIndex(index)}
             >
               <h3
-                className={`font-poppins font-bold pb-3 text-lg md:text-xl lg:text-2xl ${activeIndex === index ? 'text-textColor' : 'text-[#666565]'}`}
+                className={`font-poppins font-bold pb-3 text-lg md:text-xl lg:text-2xl ${
+                  activeIndex === index ? 'text-textColor' : 'text-[#666565]'
+                }`}
               >
                 {location.locationTitle}
               </h3>
@@ -203,18 +216,29 @@ const MapLocation = () => {
                 }`}
               >
                 <p className="text-sm lg:text-base">{location.officeName}</p>
-                <p className="text-sm lg:text-base">{location.officeLocation}</p>
+                <p className="text-sm lg:text-base">
+                  {location.officeLocation}
+                </p>
                 <p className="text-sm lg:text-base">{location.city}</p>
                 <p className="text-sm lg:text-base">{location.houseNumber}</p>
-                <Link to={`tel:${location.telephoneNumber}`} className="block text-sm md:text-base">
+                <Link
+                  to={`tel:${location.telephoneNumber}`}
+                  className="block text-sm md:text-base"
+                >
                   T: {location.telephoneNumber}
                 </Link>
                 {location.phoneNumber && (
-                  <Link to={`tel:${location.phoneNumber}`} className="block text-sm md:text-base">
+                  <Link
+                    to={`tel:${location.phoneNumber}`}
+                    className="block text-sm md:text-base"
+                  >
                     T: {location.phoneNumber}
                   </Link>
                 )}
-                <Link to={`mailto:${location.email}`} className="block text-sm md:text-base">
+                <Link
+                  to={`mailto:${location.email}`}
+                  className="block text-sm md:text-base"
+                >
                   {location.email}
                 </Link>
               </div>

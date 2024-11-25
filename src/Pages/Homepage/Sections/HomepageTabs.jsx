@@ -201,7 +201,7 @@ const HomepageTabs = () => {
   useGSAP(() => {
     gsap.from('.homepage-tab', {
       y: 20,
-      duration: 1,
+      duration: 0.5,
       ease: 'power2.out',
       stagger: 0.2,
       opacity: 0,
@@ -225,7 +225,7 @@ const HomepageTabs = () => {
   useGSAP(() => {
     gsap.from('.homepage-tab-mobile', {
       y: 20,
-      duration: 1,
+      duration: 0.5,
       ease: 'power2.out',
       stagger: 0.2,
       opacity: 0,
