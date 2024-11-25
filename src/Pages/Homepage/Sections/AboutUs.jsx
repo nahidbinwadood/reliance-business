@@ -177,7 +177,7 @@ const AboutUs = () => {
 
       {/* Counts */}
 
-      <div className="relative mt-20 h-full circle_overlay_container bg-blue-100/40">
+      <div className="relative mt-20 h-full circle_overlay_container bg-blue-100/40 hidden">
         <div className="p-2 h-full circle_overlay_effect">
           {/* Box Shape */}
           <div className="absolute top-0 left-0 w-20 h-20 md:w-32 md:h-32 bg-textColor -translate-x-2 -translate-y-2 md:-translate-x-3 md:-translate-y-3 z-10"></div>
