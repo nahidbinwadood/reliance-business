@@ -83,17 +83,16 @@ const OurServices = () => {
       opacity: 0,
     })
       .from('.our-services-point', {
-        y: 10,
-        duration: 0.8,
+        y: 20,
+        duration: 0.5,
         ease: 'power2.out',
         stagger: 0.3,
         opacity: 0,
       })
       .from('.our-services-btn', {
         y: 10,
-        duration: 0.4,
+        duration: 0.65,
         ease: 'power2.out',
-        stagger: 0.5,
         opacity: 0,
       });
   });

@@ -72,13 +72,13 @@ const AboutUs = () => {
     });
 
     tl.from(titleContainerTitleRef.current, {
-      x: -30,
+      y: 30,
       opacity: 0,
-      duration: 1.2,
+      duration: .6,
     }).from(titleContainerBtnRef.current, {
       x: 30,
       opacity: 0,
-      duration: 1,
+      duration: .6,
     });
 
     const tlCard = gsap.timeline({

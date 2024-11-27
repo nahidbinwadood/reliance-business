@@ -41,7 +41,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
 
     timeline.current
       .from('.tab-container', {
-        x: 100,
+        y: 100,
         duration: 0.65,
         opacity: 0,
         stagger: 0.2,
@@ -57,7 +57,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
       .from(
         '.homepageTabDescription p',
         {
-          x: -50,
+          y: 50,
           duration: 1,
           opacity: 0,
           stagger: 0.3,
@@ -68,7 +68,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
       .from(
         '.homepage-tab-link',
         {
-          x: 50,
+          y: 50,
           duration: 1,
           opacity: 0,
           ease: 'power2.out',

@@ -10,10 +10,11 @@ const Hero = ({heroTitleRef}) => {
 
   useGSAP(() => {
     gsap.from('.hero_text', {
-      y: 250,
+      y: 150,
       duration: 1.5,
       ease: 'power2.out',
-      stagger: 0.2,
+      skew: true,
+      stagger: 0.3,
     });
   });
 
