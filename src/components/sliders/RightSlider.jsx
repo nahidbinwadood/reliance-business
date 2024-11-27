@@ -5,11 +5,15 @@ const RightSlider = ({ rightSliderImages }) => {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    // Add the last 3 images to the beginning for a seamless loop
+    // Clone the images 10 times to avoid gaps
+    const clonedImages = [];
+    for (let i = 0; i < 10; i++) {
+      clonedImages.push(...rightSliderImages);
+    }
     setImages([
-      ...rightSliderImages.slice(-3), // Take the last 3 images
-      ...rightSliderImages, // Add the original images
-      ...rightSliderImages.slice(0, 3), // Add the first 3 images to the end
+      ...rightSliderImages.slice(-3), // Add the last 3 images at the beginning
+      ...clonedImages, // Add the cloned images
+      ...rightSliderImages.slice(0, 3), // Add the first 3 images at the end
     ]);
   }, [rightSliderImages]);
 

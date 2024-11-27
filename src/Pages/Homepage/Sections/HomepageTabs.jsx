@@ -1,9 +1,11 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import TabContents from '../../../components/TabContents';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 
 const HomepageTabs = () => {
+  gsap.registerPlugin(useGSAP, ScrollTrigger);
   const tabs = useMemo(
     () => [
       {
@@ -199,7 +201,7 @@ const HomepageTabs = () => {
   useGSAP(() => {
     gsap.from('.homepage-tab', {
       y: 20,
-      duration: 1,
+      duration: 0.5,
       ease: 'power2.out',
       stagger: 0.2,
       opacity: 0,
@@ -220,46 +222,81 @@ const HomepageTabs = () => {
     });
   });
 
+  useGSAP(() => {
+    gsap.from('.homepage-tab-mobile', {
+      y: 20,
+      duration: 0.5,
+      ease: 'power2.out',
+      stagger: 0.2,
+      opacity: 0,
+      scrollTrigger: {
+        trigger: '.homepage-tab-container',
+        start: 'top 80%',
+      },
+    });
+  });
+
   return (
     <section
-      ref={homepageTabContainerRef}
-      className="mt-5 px-5 md:px-8 2xl:px-24 pb-14 w-full homepage-tab-container"
-    >
-      {/* Tabs */}
-      <div className="relative w-full">
-        <div className="flex items-center justify-start md:justify-center gap-4 sm:gap-8 md:gap-14 overflow-x-auto">
-          {tabs.map((tab, index) => (
-            <div
-              key={tab.title}
-              ref={(el) => (tabRefs.current[index] = el)}
-              onClick={() => setActiveTab(tab)}
-              className={`cursor-pointer homepage-tab text-sm sm:text-base md:text-lg pb-3 whitespace-nowrap ${
-                activeTab === tab.title
-                  ? 'font-semibold text-black'
-                  : 'font-medium text-[#313131]'
-              }`}
-            >
-              {tab.title}
-            </div>
-          ))}
-        </div>
+    ref={homepageTabContainerRef}
+    className="mt-5 px-5 md:px-8 2xl:px-24 pb-14 w-full homepage-tab-container"
+  >
+    {/* Tabs for mobile */}
+    <div className="relative w-full block md:hidden">
+      <div className="flex flex-wrap items-center justify-start gap-4">
+        {tabs.map((tab, index) => (
+          <div
+            key={tab.title}
+            ref={(el) => (tabRefs.current[index] = el)}
+            onClick={() => setActiveTab(tab)}
+            className={`cursor-pointer homepage-tab-mobile text-sm sm:text-base xl:text-lg px-3 py-2 rounded-md ${
+              activeTab.title === tab.title
+                ? 'bg-blue-500 text-white font-semibold'
+                : 'bg-gray-200 text-gray-800 font-medium'
+            }`}
+          >
+            {tab.title}
+          </div>
+        ))}
+      </div>
+    </div>
 
-        {/* Dynamic Underline */}
-        <div
-          className="absolute bottom-0 homepage-tab-indicator h-1 bg-textColor transition-all duration-300 rounded-md"
-          style={{
-            left: `${underlineStyle.left}px`,
-            width: `${underlineStyle.width}px`,
-          }}
-        />
+    {/* Tabs for medium to large screens */}
+    <div className="relative w-full hidden md:block">
+      <div className="flex items-center justify-center gap-4 sm:gap-8 2xl:gap-14">
+        {tabs.map((tab, index) => (
+          <div
+            key={tab.title}
+            ref={(el) => (tabRefs.current[index] = el)}
+            onClick={() => setActiveTab(tab)}
+            className={`cursor-pointer homepage-tab text-sm sm:text-base xl:text-lg pb-3 whitespace-nowrap ${
+              activeTab.title === tab.title
+                ? 'font-semibold text-black'
+                : 'font-medium text-[#313131]'
+            }`}
+          >
+            {tab.title}
+          </div>
+        ))}
       </div>
 
-      {/* Tab contents */}
-      <TabContents
-        homepageTabContainerRef={homepageTabContainerRef}
-        tab={activeTab}
+      {/* Dynamic Underline */}
+      <div
+        className="absolute bottom-0 homepage-tab-indicator h-1 bg-textColor transition-all duration-300 rounded-md"
+        style={{
+          left: `${underlineStyle.left}px`,
+          width: `${underlineStyle.width}px`,
+        }}
       />
-    </section>
+    </div>
+
+    {/* Tab contents */}
+    <TabContents
+      homepageTabContainerRef={homepageTabContainerRef}
+      tab={activeTab}
+    />
+  </section>
+
   );
 };
 

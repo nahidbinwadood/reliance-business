@@ -22,7 +22,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
     timeline.current = gsap.timeline({
       scrollTrigger: {
         trigger: homepageTabContainerRef.current,
-        start: 'top 70%',
+        start: 'top 85%',
         toggleActions: 'play none none reset',
       },
     });
@@ -49,7 +49,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
       })
       .from('.slider-container', {
         y: 20,
-        duration: 0.5,
+        duration: 0.6,
         opacity: 0,
         stagger: 0.2,
         ease: 'power2.out',
@@ -59,11 +59,12 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
         {
           y: 50,
           duration: 1,
+
           opacity: 0,
-          stagger: 0.3,
+          stagger: 0.2,
           ease: 'power2.out',
         },
-        '-=0.8'
+        '-=0.4'
       )
       .from(
         '.homepage-tab-link',
@@ -82,7 +83,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
   }, [runAnimation, tab]);
 
   return (
-    <div className="mt-8 md:mt-10 lg:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 2xl:gap-20 px-4 md:px-8">
+    <div className="mt-8 md:mt-10 lg:mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 2xl:gap-20">
       {/* Left Content */}
       <div className="flex justify-center flex-col">
         {/* Title Container */}

@@ -31,7 +31,7 @@ body{
 
 @keyframes slideVerticalTopToBottom {
   0% {
-    transform: translateY(-40%); /* Start at the last few images */
+    transform: translateY(-20%); /* Start at the last few images */
   }
   100% {
     transform: translateY(0); /* Scroll down to the start */
@@ -40,7 +40,7 @@ body{
 
 .animate-slideVerticalTopToBottom {
   animation-name: slideVerticalTopToBottom;
-  animation-duration: 80s; /* Adjust this for desired speed */
+  animation-duration: 300s; /* Adjust this for desired speed */
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }

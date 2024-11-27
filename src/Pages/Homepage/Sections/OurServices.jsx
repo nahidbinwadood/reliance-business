@@ -71,27 +71,27 @@ const OurServices = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.our-service-container',
-        start: 'top 80%',
+        start: 'top 90%',
       },
     });
 
     tl.from('.our-service-content', {
       y: 20,
-      duration: 0.8,
+      duration: 0.5,
       ease: 'power2.out',
-      stagger: 0.3,
+      stagger: 0.2,
       opacity: 0,
     })
       .from('.our-services-point', {
         y: 20,
         duration: 0.5,
         ease: 'power2.out',
-        stagger: 0.3,
+        stagger: 0.1,
         opacity: 0,
       })
       .from('.our-services-btn', {
         y: 10,
-        duration: 0.65,
+        duration: 0.4,
         ease: 'power2.out',
         opacity: 0,
       });
