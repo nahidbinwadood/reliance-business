@@ -79,7 +79,7 @@ const NavLinkContainer = ({ navLinks }) => {
         </div>
 
         {/* hamburger */}
-        <div ref={hamburgerRef} className="lg:hidden">
+        <div ref={hamburgerRef} className="lg:hidden bg-[#00126F] rounded-md">
           <Hamburger
             color="#ffffff"
             size={20}
