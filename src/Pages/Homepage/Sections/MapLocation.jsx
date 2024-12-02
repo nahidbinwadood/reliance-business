@@ -3,8 +3,10 @@ import gsap from 'gsap';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 const MapLocation = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
+
   const locations = [
     {
       locationTitle: 'Montreal',
@@ -132,9 +134,29 @@ const MapLocation = () => {
         duration: 0.8,
         ease: 'power2.out',
       });
+
+      // Add delay for the button after the image container
+      gsap.fromTo(
+        '.together-action-btn',  // Adjust to your actual button class
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+          delay: 0.3,  // 0.3-second delay after the image container
+          scrollTrigger: {
+            trigger: '.map-location', // Adjust trigger based on your section
+            start: 'top 70%',
+            toggleActions: 'play reverse play reverse',  // Reverse animation on scroll out
+          },
+        }
+      );
     }
   }, [screenSize]);
-
   return (
     <div className="map-location">
       {/* Background Map */}
@@ -152,7 +174,7 @@ const MapLocation = () => {
       {/* Locations Container */}
       <div
         ref={containerRef}
-        className={`max-w-[1280px] mx-5 md:mx-8 lg:mx-12 xl:mx-auto bg-white shadow-lg rounded-2xl relative border border-textColor
+        className={`max-w-[1280px] mx-5 md:mx-8 lg:mx-12 xl:mx-auto bg-white shadow-lg rounded-2xl relative border-textColor border-[3px]
           ${screenSize === 'small' ? 'mt-8' : '-mt-[200px]'}
           ${
             screenSize === 'medium'
@@ -171,15 +193,26 @@ const MapLocation = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="50"
-              height="29"
-              viewBox="0 0 50 29"
-              fill="white"
+              width="42"
+              height="49"
+              viewBox="0 0 42 49"
+              fill="none"
             >
-              <path d="M12 26H38.5L49.5 29H2.5L12 26Z" fill="white" />
               <path
-                d="M0 27.5C8 27.5 17.1688 27.8044 21 18.5C24.5 10 25.5 4 26 2C27.5 7.5 30.5 18 31.7056 20C32.9963 22.1411 37.2056 28.5 49.2056 27.5"
-                stroke="#4096FA"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M42 21C42 9.40202 32.598 0 21 0C9.40202 0 0 9.40202 0 21C0 23.8711 0.576173 26.6076 1.6192 29.1003C5.94533 40.912 21.1104 49 21.1104 49C21.1104 49 39.7389 39.0648 41.5928 25.1361C41.8599 23.7989 42 22.4158 42 21Z"
+                fill="#4096FA"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M38.6509 24.7849L38.6318 24.8814L38.619 24.9789C37.8426 30.8763 33.4427 36.2795 28.6948 40.4277C26.3812 42.4489 24.1126 44.0616 22.42 45.1691C21.9283 45.4908 21.4872 45.7686 21.1104 46C20.8599 45.8462 20.5811 45.672 20.2779 45.4779C18.8615 44.5714 16.9286 43.2433 14.8719 41.5641C10.6804 38.142 6.31788 33.5375 4.4362 28.3436L4.41287 28.2792L4.38668 28.2159C3.4944 26.0601 3 23.691 3 21.1975C3 11.1473 11.0589 3 21 3C30.9411 3 39 11.1473 39 21.1975C39 22.4283 38.8796 23.6276 38.6509 24.7849Z"
+                fill="#00126F"
+              />
+              <path
+                d="M29 21C29 16.5817 25.4183 13 21 13C16.5817 13 13 16.5817 13 21C13 25.4183 16.5817 29 21 29C25.4183 29 29 25.4183 29 21Z"
+                fill="white"
               />
             </svg>
           </div>
@@ -192,7 +225,10 @@ const MapLocation = () => {
           {locations.map((location, index) => (
             <div
               key={index}
-              className={`p-5 location-card transition-all duration-500 text-center ${
+              className={`p-5 location-card transition-all duration-500 text-center
+                ${index==0 ?"pr-14":"pr-0"}
+                ${index==2 ?"pl-14":"pr-0 pl-0"}
+                 ${
                 index == 2 ? 'md:col-span-2 lg:col-span-1' : ''
               } ${screenSize === 'small' ? 'border-b-none' : 'px-4 py-4'} ${
                 screenSize === 'large' && activeIndex === index

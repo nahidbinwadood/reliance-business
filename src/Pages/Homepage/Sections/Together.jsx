@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import TitleContainer from '../../../components/TitleContainer';
 import persons from '../../../assets/images/persons.png';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
@@ -23,7 +23,7 @@ const Together = () => {
         start: 'top 80%',
         end: 'bottom 20%',
         toggleActions: 'play none none reverse', // Play forward on enter, reverse on leave
-      }
+      },
     });
 
     const titleElements = titleRef.current.querySelectorAll('.animate-title');
@@ -35,7 +35,7 @@ const Together = () => {
         {
           y: 50,
           opacity: 0,
-          scale: 0.9
+          scale: 0.9,
         },
         {
           y: 0,
@@ -43,7 +43,7 @@ const Together = () => {
           scale: 1,
           duration: 1,
           ease: 'power3.out',
-          stagger: 0.2
+          stagger: 0.2,
         }
       )
       .fromTo(
@@ -51,7 +51,7 @@ const Together = () => {
         {
           y: 30,
           opacity: 0,
-          filter: 'blur(10px)'
+          filter: 'blur(10px)',
         },
         {
           y: 0,
@@ -59,7 +59,7 @@ const Together = () => {
           filter: 'blur(0px)',
           duration: 1,
           ease: 'power3.out',
-          stagger: 0.3
+          stagger: 0.3,
         },
         '-=0.5' // Overlap with previous animation
       );
@@ -69,7 +69,7 @@ const Together = () => {
       actionBtnRef.current,
       {
         x: -50,
-        opacity: 0
+        opacity: 0,
       },
       {
         x: 0,
@@ -81,7 +81,7 @@ const Together = () => {
           start: 'top 90%',
           end: 'bottom 10%',
           toggleActions: 'play none none reverse', // Play forward on enter, reverse on leave
-        }
+        },
       }
     );
 
@@ -91,7 +91,7 @@ const Together = () => {
         trigger: '.title-white-overlay',
         start: 'top 90%',
         toggleActions: 'play reverse play reverse',
-      }
+      },
     });
 
     // White container scale animation
@@ -114,15 +114,9 @@ const Together = () => {
   }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className="mt-6 mb-10 title-together-container"
-    >
+    <div ref={sectionRef} className="mt-6 mb-10 title-together-container">
       {/* Title Section */}
-      <div
-        ref={titleRef}
-        className="px-6 md:px-8 2xl:px-24"
-      >
+      <div ref={titleRef} className="px-6 md:px-8 2xl:px-24">
         <div className="animate-title">
           <TitleContainer
             highlightedText="BUILDING FUTURE SKYLINES"
