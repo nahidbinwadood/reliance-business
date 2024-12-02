@@ -7,6 +7,8 @@ import Projects from './Sections/Projects';
 import Together from './Sections/Together';
 import AboutSm from './../../components/AboutSm';
 import StatsSm from './Sections/StatsSm';
+import ServicesSm from './Sections/ServicesSm';
+import MapSmall from './Sections/MapSmall';
 
 const Homepage = () => {
   return (
@@ -18,12 +20,14 @@ const Homepage = () => {
         <AboutSm />
         <Projects />
         <StatsSm />
+        <ServicesSm />
       </div>
 
       <HomepageTabs />
       <OurServices />
       <Together />
       <MapLocation />
+      <MapSmall />
       <GoUp />
     </>
   );

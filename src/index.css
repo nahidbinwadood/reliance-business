@@ -19,7 +19,7 @@ video {
     transform: translateY(-100%); /* Move up by half the content's height */
   }
 }
-body{
+body {
   overflow-x: hidden;
 }
 .animate-slideVertical {
@@ -67,10 +67,12 @@ body{
   opacity: var(--swiper-pagination-bullet-opacity, 1);
   background: #4096fa;
 }
-.white-overlay,.title-white-overlay{
+.white-overlay,
+.title-white-overlay {
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
-.circle_overlay_effect,.title_circle_overlay_effect {
+.circle_overlay_effect,
+.title_circle_overlay_effect {
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
 .rfm-initial-child-container {
@@ -82,3 +84,6 @@ body{
   gap: 20px;
 }
 
+body {
+  overflow-x: hidden !important;
+}

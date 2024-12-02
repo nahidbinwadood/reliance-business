@@ -137,7 +137,7 @@ const MapLocation = () => {
 
       // Add delay for the button after the image container
       gsap.fromTo(
-        '.together-action-btn',  // Adjust to your actual button class
+        '.together-action-btn', // Adjust to your actual button class
         {
           opacity: 0,
           y: 20,
@@ -147,18 +147,18 @@ const MapLocation = () => {
           y: 0,
           duration: 0.5,
           ease: 'power2.out',
-          delay: 0.3,  // 0.3-second delay after the image container
+          delay: 0.3, // 0.3-second delay after the image container
           scrollTrigger: {
             trigger: '.map-location', // Adjust trigger based on your section
             start: 'top 70%',
-            toggleActions: 'play reverse play reverse',  // Reverse animation on scroll out
+            toggleActions: 'play reverse play reverse', // Reverse animation on scroll out
           },
         }
       );
     }
   }, [screenSize]);
   return (
-    <div className="map-location hidden">
+    <div className="map-location hidden md:block">
       {/* Background Map */}
       <div
         className="w-full transition-all duration-1000 ease-in-out"
@@ -226,11 +226,11 @@ const MapLocation = () => {
             <div
               key={index}
               className={`p-5 location-card transition-all duration-500 text-center
-                ${index==0 ?"pr-14":"pr-0"}
-                ${index==2 ?"pl-14":"pr-0 pl-0"}
-                 ${
-                index == 2 ? 'md:col-span-2 lg:col-span-1' : ''
-              } ${screenSize === 'small' ? 'border-b-none' : 'px-4 py-4'} ${
+                ${index == 0 ? 'pr-14' : 'pr-0'}
+                ${index == 2 ? 'pl-14' : 'pr-0 pl-0'}
+                 ${index == 2 ? 'md:col-span-2 lg:col-span-1' : ''} ${
+                screenSize === 'small' ? 'border-b-none' : 'px-4 py-4'
+              } ${
                 screenSize === 'large' && activeIndex === index
                   ? 'scale-105'
                   : 'scale-100'

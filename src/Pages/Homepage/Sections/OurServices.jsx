@@ -139,7 +139,7 @@ const OurServices = () => {
   });
 
   return (
-    <div className="bg-bgPrimary !overflow-x-hidden py-5 sm:py-8 md:py-10 lg:py-16 px-5 md:px-8 2xl:px-24 our-service-container">
+    <div className="bg-[#F4F8FB] md:bg-bgPrimary !overflow-x-hidden py-5 sm:py-8 md:py-10 lg:py-16 px-5 md:px-8 2xl:px-24 our-service-container md:block hidden">
       {/* title */}
       <div>
         <div className="our-service-content">

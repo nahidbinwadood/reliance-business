@@ -89,14 +89,14 @@ const Projects = () => {
       duration: 0.8,
       scrollTrigger: {
         trigger: '.projects-container-sm-btn',
-        start: 'top 88%',
+        start: 'top 75%',
         toggleActions: 'play reverse play reverse',
       },
     });
   }, []);
 
   return (
-    <div className="bg-white md:hidden px-5 md:px-8 2xl:px-24 pb-14 w-full projects-container-sm">
+    <div className="bg-white md:hidden overflow-x-hidden px-5 md:px-8 2xl:px-24 pb-14 w-full projects-container-sm">
       <div className="tab-container" ref={titleRef}>
         <TitleContainer
           borderRef={borderRef}
@@ -122,7 +122,7 @@ const Projects = () => {
       </div>
 
       {/* Marquee */}
-      <div ref={marqueeRef} className="mt-8">
+      <div ref={marqueeRef} className="mt-8 hidden">
         <Marquee speed={50} autoFill={true} className="rounded-md">
           {images.map((image, index) => (
             <div
