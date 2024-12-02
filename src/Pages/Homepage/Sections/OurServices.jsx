@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import TitleContainer from '../../../components/TitleContainer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-// import required modules
+// Import required modules
 import { Pagination, Navigation, Autoplay } from 'swiper/modules';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
 import { useGSAP } from '@gsap/react';
@@ -54,9 +54,12 @@ const OurServices = () => {
     ],
     []
   );
+
   gsap.registerPlugin(useGSAP, ScrollTrigger);
+
   const [activeTab, setActiveTab] = useState(services[0]);
   const [swiperInstance, setSwiperInstance] = useState(null);
+  const borderRef = useRef(null);
 
   const handleTabChange = (service) => {
     setActiveTab(service);
@@ -67,45 +70,69 @@ const OurServices = () => {
     }
   };
 
+  // GSAP Animations
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.our-service-container',
         start: 'top 90%',
+        end: 'bottom top',
+        toggleActions: 'play none none reverse',
       },
     });
 
     tl.from('.our-service-content', {
-      y: 20,
-      duration: 0.5,
-      ease: 'power2.out',
-      stagger: 0.2,
+      y: 60,
+      duration: 1,
       opacity: 0,
+      filter: 'blur(15px)',
+      ease: 'power3.out',
     })
-      .from('.our-services-point', {
-        y: 20,
-        duration: 0.5,
-        ease: 'power2.out',
-        stagger: 0.1,
+      .fromTo(
+        borderRef.current,
+        {
+          width: '0px',
+        },
+        {
+          width: '100px',
+          duration: 0.7,
+          ease: 'power3.out',
+        }
+      )
+      .from('.our-service-content-p', {
+        y: 30,
+        filter: 'blur(15px)',
         opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      })
+      .from('.our-services-point', {
+        y: 30,
+        filter: 'blur(15px)',
+        opacity: 0,
+        stagger: 0.2,
+        duration: 0.5,
+        ease: 'power3.out',
       })
       .from('.our-services-btn', {
-        y: 10,
-        duration: 0.4,
-        ease: 'power2.out',
+        y: 20,
         opacity: 0,
+        duration: 0.6,
+        ease: 'power3.out',
       });
   });
 
+  // Slide Animations (Swiper section)
   useGSAP(() => {
     gsap.from('.our-services-slides', {
       x: 150,
-      duration: 1,
-      ease: 'power2.out',
+      duration: 1.2,
+      ease: 'power3.out',
       opacity: 0,
       scrollTrigger: {
         trigger: '.our-service-container',
         start: 'top 50%',
+        toggleActions: 'play none none reverse',
       },
     });
   });
@@ -113,16 +140,16 @@ const OurServices = () => {
   return (
     <div className="bg-bgPrimary !overflow-x-hidden py-5 sm:py-8 md:py-10 lg:py-16 px-5 md:px-8 2xl:px-24 our-service-container">
       {/* title */}
-
       <div>
         <div className="our-service-content">
           <TitleContainer
+            borderRef={borderRef}
             highlightedText="OUR"
             title="SERVICES"
             borderColor="light"
           />
         </div>
-        <p className="mt-5 md:mt-7 lg:mt-8 text-white md:w-4/5 leading-[32px] our-service-content">
+        <p className="mt-5 md:mt-7 lg:mt-8 text-white md:w-4/5 leading-[32px] our-service-content-p">
           From planning and executing new construction to managing turn-key
           design-build projects or delivering complex renovations, we have
           unique, specialized and honed expertise to transform your ideas and
