@@ -31,7 +31,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from 'react';
 
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
 const contentsCardInfo = [
   {
@@ -59,85 +59,89 @@ const contentsCardInfo = [
 ];
 
 const AboutUs = () => {
-  gsap.registerPlugin(useGSAP, ScrollTrigger);
   const aboutUsSectionRef = useRef(null);
   const titleContainerTitleRef = useRef(null);
   const titleContainerBtnRef = useRef(null);
   const countersRefs = useRef([]);
+
   useGSAP(() => {
-    const tl = gsap.timeline({
+    // Title animation
+    gsap.from(titleContainerTitleRef.current, {
       scrollTrigger: {
         trigger: '.about-section-container',
-        start: 'top 90%',
+        start: 'top 70%',
+        toggleActions: 'play reverse play reverse',
       },
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
     });
 
-    tl.from(titleContainerTitleRef.current, {
-      y: 30,
+    gsap.from(titleContainerBtnRef.current, {
+      scrollTrigger: {
+        trigger: '.about-section-container',
+        start: 'top 70%',
+        toggleActions: 'play reverse play reverse',
+      },
+      x: 50,
       opacity: 0,
-
-      duration: 0.5,
-    }).from(titleContainerBtnRef.current, {
-      x: 30,
-      opacity: 0,
-      duration: 0.6,
+      duration: 0.8,
     });
 
-    const tlCard = gsap.timeline({
+    // Cards animation
+    gsap.from('.about-card', {
       scrollTrigger: {
         trigger: '.about-us-cards-container',
-        start: 'top 70%', // Trigger animation when cards are in view
-        end: '+=300', // Smoothens the duration of the scroll-triggered animation
-        toggleActions: 'play none none reverse', // Control animation play and reset
+        start: 'top 70%',
+        toggleActions: 'play reverse play reverse',
       },
-    });
-    tlCard.from('.about-card', {
       y: 30,
       duration: 0.8,
       stagger: 0.2,
       opacity: 0,
     });
-  }, []);
-  useGSAP(() => {
-    const tl = gsap.timeline({
+
+    // Circle overlay animation
+    gsap.from('.circle_overlay_container', {
       scrollTrigger: {
         trigger: '.circle_overlay_container',
         start: 'top 90%',
+        toggleActions: 'play reverse play reverse',
       },
-    });
-
-    // Step 1: Scale the white container (first animation)
-    tl.from('.circle_overlay_container', {
       scale: 0.5,
       duration: 1.2,
       ease: 'power2.out',
     });
 
-    tl.from(
-      '.circle_overlay_effect',
-      {
-        clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)',
-        duration: 1.2,
-        ease: 'power2.out',
+    gsap.from('.circle_overlay_effect', {
+      scrollTrigger: {
+        trigger: '.circle_overlay_container',
+        start: 'top 90%',
+        toggleActions: 'play reverse play reverse',
       },
-      0.1
-    );
+      clipPath: 'polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)',
+      duration: 1.2,
+      ease: 'power2.out',
+    });
 
-    tl.to(
-      '.circle_overlay_container',
-      {
-        backgroundColor: 'rgba(0, 0, 0, 0)',
-        duration: 0.5,
-        ease: 'power2.out',
+    gsap.to('.circle_overlay_container', {
+      scrollTrigger: {
+        trigger: '.circle_overlay_container',
+        start: 'top 90%',
+        toggleActions: 'play reverse play reverse',
       },
-      0.8
-    );
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      duration: 0.5,
+      ease: 'power2.out',
+    });
 
+    // Counters animation
     countersRefs.current.forEach((ref) => {
       gsap.from(ref, {
         scrollTrigger: {
           trigger: ref,
           start: 'top 75%',
+          toggleActions: 'play reverse play reverse',
         },
         y: 20,
         opacity: 0,
@@ -148,7 +152,7 @@ const AboutUs = () => {
         },
       });
     });
-  });
+  }, []);
 
   return (
     <section
@@ -167,7 +171,7 @@ const AboutUs = () => {
         />
       </div>
 
-      {/* cards */}
+      {/* Cards */}
       <div className="mt-10 grid grid-cols-1 gap-5 md:gap-0 md:grid-cols-3 about-us-cards-container">
         {aboutUsInfo?.map((info, index) => (
           <AboutCard key={info?.highlightedText} info={info} index={index} />
@@ -175,14 +179,13 @@ const AboutUs = () => {
       </div>
 
       {/* Counts */}
-
       <div className="relative mt-20 h-full circle_overlay_container bg-blue-100/40">
         <div className="p-2 h-full circle_overlay_effect">
           {/* Box Shape */}
           <div className="absolute top-0 left-0 w-20 h-20 md:w-32 md:h-32 bg-textColor -translate-x-2 -translate-y-2 md:-translate-x-3 md:-translate-y-3 z-10"></div>
 
           {/* Logo */}
-          <div className="absolute top-10 right-10 md:top-20 md:right-20 font-poppins border-2 border-white px-3 py-2 md:px-5 md:py-3 z-30 text-white text-base md:text-xl font-semibold">
+          <div className="absolute top-10 right-10 md:top-20 md:right-20 font-poppins border-2 border-white px-3 py-2 md:px-5 md:py-3 z-[60] text-white text-base md:text-xl font-semibold">
             <p>reliance</p>
           </div>
 
