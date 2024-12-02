@@ -114,7 +114,7 @@ const Together = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="mt-6 mb-10 title-together-container">
+    <div ref={sectionRef} className="mt-6 mb-10 title-together-container lg:mb-20">
       {/* Title Section */}
       <div ref={titleRef} className="px-6 md:px-8 2xl:px-24">
         <div className="animate-title">

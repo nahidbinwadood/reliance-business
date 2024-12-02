@@ -13,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
 const TabContents = ({ tab, homepageTabContainerRef }) => {
   const tabContentsRef = useRef(null);
   const timeline = useRef(null);
-
+  const borderRef = useRef(null);
   const runAnimation = () => {
     if (timeline.current) {
       timeline.current.kill();
@@ -47,6 +47,17 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
         stagger: 0.2,
         ease: 'power2.out',
       })
+      .fromTo(
+        borderRef.current,
+        {
+          width: '0px',
+        },
+        {
+          width: '100px',
+          duration: 0.6,
+          ease: 'power2.out',
+        }
+      )
       .from('.slider-container', {
         y: 20,
         duration: 0.6,
@@ -89,6 +100,7 @@ const TabContents = ({ tab, homepageTabContainerRef }) => {
         {/* Title Container */}
         <div className="tab-container" ref={tabContentsRef}>
           <TitleContainer
+            borderRef={borderRef}
             highlightedText={tab?.highlightedText}
             title={tab?.contentTitle}
             titleColor="dark"

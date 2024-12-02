@@ -63,6 +63,7 @@ const AboutUs = () => {
   const titleContainerTitleRef = useRef(null);
   const titleContainerBtnRef = useRef(null);
   const countersRefs = useRef([]);
+  const borderRef = useRef(null);
 
   useGSAP(() => {
     // Title animation
@@ -76,6 +77,23 @@ const AboutUs = () => {
       opacity: 0,
       duration: 0.8,
     });
+
+    gsap.fromTo(
+      borderRef.current,
+      {
+        width: '0px',
+      },
+      {
+        width: '100px',
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.about-section-container',
+          start: 'top 70%',
+          toggleActions: 'play reverse play reverse',
+        },
+      }
+    );
 
     gsap.from(titleContainerBtnRef.current, {
       scrollTrigger: {
@@ -163,6 +181,7 @@ const AboutUs = () => {
         <TitleContainer
           titleContainerBtnRef={titleContainerBtnRef}
           titleContainerTitleRef={titleContainerTitleRef}
+          borderRef={borderRef}
           highlightedText="WE ARE "
           title="RELIANCE"
           buttonText="Learn more about Reliance"

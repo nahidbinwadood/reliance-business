@@ -11,6 +11,7 @@ const TitleContainer = ({
   borderColor,
   titleContainerBtnRef,
   titleContainerTitleRef,
+  borderRef,
 }) => {
   return (
     <div className="w-full flex-col gap-8 md:flex-row flex md:items-center justify-between">
@@ -24,8 +25,8 @@ const TitleContainer = ({
           </span>
         </h2>
         {borderColor && (
-          <div
-            className={`mt-3 lg:mt-4 h-1 w-full max-w-[100px] ${
+          <div ref={borderRef}
+            className={`mt-3 lg:mt-4 h-1 w-full max-w-[100px] titleBorder ${
               borderColor === 'light' ? 'bg-white' : 'bg-primary'
             }`}
           />
