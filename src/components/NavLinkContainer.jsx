@@ -67,7 +67,7 @@ const NavLinkContainer = ({ navLinks }) => {
       if (showSubmenu) {
         gsap.to(submenuRef.current, {
           y: 5,
-          x:-100,
+          x: -100,
           opacity: 1,
           duration: 0.5,
           ease: 'power2.out',
@@ -76,7 +76,7 @@ const NavLinkContainer = ({ navLinks }) => {
       } else {
         gsap.to(submenuRef.current, {
           y: 30,
-          x:-100,
+          x: -100,
           opacity: 0,
           duration: 0.6,
           ease: 'power2.out',
@@ -175,7 +175,7 @@ const NavLinkContainer = ({ navLinks }) => {
                 >
                   {subMenu?.map((menu) => (
                     <NavLink
-                    onClick={()=>setShowSubmenu(false)}
+                      onClick={() => setShowSubmenu(false)}
                       to={'/'}
                       className="py-2 px-7 hover:bg-gray-300 hover:text-black rounded-md transition-all duration-500 w-full"
                       key={menu?.path}
@@ -195,6 +195,7 @@ const NavLinkContainer = ({ navLinks }) => {
 
       {/* sidebar */}
       <Sidebar
+        subMenu={subMenu}
         sidebarRef={sidebarRef}
         isOpen={isOpen}
         setOpen={setOpen}

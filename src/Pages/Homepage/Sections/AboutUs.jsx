@@ -175,7 +175,7 @@ const AboutUs = () => {
   return (
     <section
       ref={aboutUsSectionRef}
-      className="bg-bgPrimary pt-16 lg:pt-24 px-5 md:px-8 2xl:px-24 pb-14 w-full about-section-container"
+      className="bg-bgPrimary hidden md:block pt-16 lg:pt-24 px-5 md:px-8 2xl:px-24 pb-14 w-full about-section-container"
     >
       <div>
         <TitleContainer

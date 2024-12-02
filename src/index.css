@@ -73,5 +73,12 @@ body{
 .circle_overlay_effect,.title_circle_overlay_effect {
   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
 }
-
+.rfm-initial-child-container {
+  flex: 0 0 auto;
+  display: flex;
+  min-width: auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+}
 

@@ -158,7 +158,7 @@ const MapLocation = () => {
     }
   }, [screenSize]);
   return (
-    <div className="map-location">
+    <div className="map-location hidden">
       {/* Background Map */}
       <div
         className="w-full transition-all duration-1000 ease-in-out"

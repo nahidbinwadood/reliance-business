@@ -18,12 +18,12 @@ const Together = () => {
 
     // Title and Description Animation
     const titleAnimation = gsap.timeline({
-      scrollTrigger: {
-        trigger: titleRef.current,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse', // Play forward on enter, reverse on leave
-      },
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse', // Play forward on enter, reverse on leave
+        },
     });
 
     const titleElements = titleRef.current.querySelectorAll('.animate-title');

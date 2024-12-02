@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import bannerBg from '../assets/videos/banner-bg.mp4';
-import bannerSmall from "../assets/videos/banner-bg-mobile.mp4"
+import bannerSmall from '../assets/videos/banner-bg-mobile.mp4';
 const HeroBg = () => {
   const [screenSize, setScreenSize] = useState('large');
   useEffect(() => {
@@ -29,7 +29,13 @@ const HeroBg = () => {
       ></video>
 
       {/* shade */}
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[rgba(0,18,111,0.63)] via-[rgba(0,18,111,0.27)] to-[rgba(0,18,111,0.09)]" />
+      <div
+        className="absolute top-0 left-0 w-full h-full"
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(0, 18, 111, 0.63) 0%, rgba(0, 18, 111, 0.54) 43%, rgba(64, 150, 250, 0.00) 100%)',
+        }}
+      />
     </>
   );
 };

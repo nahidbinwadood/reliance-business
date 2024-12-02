@@ -82,8 +82,8 @@ const OurServices = () => {
     });
 
     tl.from('.our-service-content', {
-      y: 60,
-      duration: 1,
+      y: 50,
+      duration: 0.7,
       opacity: 0,
       filter: 'blur(15px)',
       ease: 'power3.out',
@@ -95,7 +95,7 @@ const OurServices = () => {
         },
         {
           width: '100px',
-          duration: 0.7,
+          duration: 0.5,
           ease: 'power3.out',
         }
       )
@@ -126,6 +126,7 @@ const OurServices = () => {
   useGSAP(() => {
     gsap.from('.our-services-slides', {
       x: 150,
+      delay: 0.5,
       duration: 1.2,
       ease: 'power3.out',
       opacity: 0,

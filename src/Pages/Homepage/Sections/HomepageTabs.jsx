@@ -238,65 +238,64 @@ const HomepageTabs = () => {
 
   return (
     <section
-    ref={homepageTabContainerRef}
-    className="mt-5 px-5 md:px-8 2xl:px-24 pb-14 w-full homepage-tab-container"
-  >
-    {/* Tabs for mobile */}
-    <div className="relative w-full block md:hidden">
-      <div className="flex flex-wrap items-center justify-start gap-4">
-        {tabs.map((tab, index) => (
-          <div
-            key={tab.title}
-            ref={(el) => (tabRefs.current[index] = el)}
-            onClick={() => setActiveTab(tab)}
-            className={`cursor-pointer homepage-tab-mobile text-sm sm:text-base xl:text-lg px-3 py-2 rounded-md ${
-              activeTab.title === tab.title
-                ? 'bg-blue-500 text-white font-semibold'
-                : 'bg-gray-200 text-gray-800 font-medium'
-            }`}
-          >
-            {tab.title}
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* Tabs for medium to large screens */}
-    <div className="relative w-full hidden md:block">
-      <div className="flex items-center justify-center gap-4 sm:gap-8 2xl:gap-14">
-        {tabs.map((tab, index) => (
-          <div
-            key={tab.title}
-            ref={(el) => (tabRefs.current[index] = el)}
-            onClick={() => setActiveTab(tab)}
-            className={`cursor-pointer homepage-tab text-sm sm:text-base xl:text-lg pb-3 whitespace-nowrap ${
-              activeTab.title === tab.title
-                ? 'font-semibold text-black'
-                : 'font-medium text-[#313131]'
-            }`}
-          >
-            {tab.title}
-          </div>
-        ))}
+      ref={homepageTabContainerRef}
+      className="mt-5 px-5 md:px-8 2xl:px-24 pb-14 w-full homepage-tab-container hidden md:block"
+    >
+      {/* Tabs for mobile */}
+      <div className="relative w-full block md:hidden">
+        <div className="flex flex-wrap items-center justify-start gap-4">
+          {tabs.map((tab, index) => (
+            <div
+              key={tab.title}
+              ref={(el) => (tabRefs.current[index] = el)}
+              onClick={() => setActiveTab(tab)}
+              className={`cursor-pointer homepage-tab-mobile text-sm sm:text-base xl:text-lg px-3 py-2 rounded-md ${
+                activeTab.title === tab.title
+                  ? 'bg-blue-500 text-white font-semibold'
+                  : 'bg-gray-200 text-gray-800 font-medium'
+              }`}
+            >
+              {tab.title}
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Dynamic Underline */}
-      <div
-        className="absolute bottom-0 homepage-tab-indicator h-1 bg-textColor transition-all duration-300 rounded-md"
-        style={{
-          left: `${underlineStyle.left}px`,
-          width: `${underlineStyle.width}px`,
-        }}
+      {/* Tabs for medium to large screens */}
+      <div className="relative w-full hidden md:block">
+        <div className="flex items-center justify-center gap-4 sm:gap-8 2xl:gap-14">
+          {tabs.map((tab, index) => (
+            <div
+              key={tab.title}
+              ref={(el) => (tabRefs.current[index] = el)}
+              onClick={() => setActiveTab(tab)}
+              className={`cursor-pointer homepage-tab text-sm sm:text-base xl:text-lg pb-3 whitespace-nowrap ${
+                activeTab.title === tab.title
+                  ? 'font-semibold text-black'
+                  : 'font-medium text-[#313131]'
+              }`}
+            >
+              {tab.title}
+            </div>
+          ))}
+        </div>
+
+        {/* Dynamic Underline */}
+        <div
+          className="absolute bottom-0 homepage-tab-indicator h-1 bg-textColor transition-all duration-300 rounded-md"
+          style={{
+            left: `${underlineStyle.left}px`,
+            width: `${underlineStyle.width}px`,
+          }}
+        />
+      </div>
+
+      {/* Tab contents */}
+      <TabContents
+        homepageTabContainerRef={homepageTabContainerRef}
+        tab={activeTab}
       />
-    </div>
-
-    {/* Tab contents */}
-    <TabContents
-      homepageTabContainerRef={homepageTabContainerRef}
-      tab={activeTab}
-    />
-  </section>
-
+    </section>
   );
 };
 

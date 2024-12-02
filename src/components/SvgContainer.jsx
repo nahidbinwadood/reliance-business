@@ -3,7 +3,7 @@ export function DownArrowSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="size-5 sm:size-6 lg:size-7 2xl:size-8"
+      className="size-4 sm:size-6 lg:size-7 2xl:size-8"
       viewBox="0 0 38 38"
       fill="none"
     >
