@@ -7,7 +7,7 @@ const GoUp = () => {
     });
   }
   return (
-    <div onClick={goToTop} className="md:-mt-[350px] md:pt-[400px] lg:-mt-[250px] pt-10 lg:pt-[300px] 2xl:pt-[350px] pb-10 2xl:pb-20 md:bg-[#f4f8fb] flex w-full items-center justify-end px-5 md:px-8 lg:px-12 2xl:px-24  cursor-pointer">
+    <div onClick={goToTop} className="md:-mt-[350px] md:pt-[400px] lg:-mt-[250px] pt-10 lg:pt-[300px] 2xl:pt-[350px] pb-10 2xl:pb-20 flex w-full items-center justify-end px-5 md:px-8 lg:px-12 2xl:px-24  cursor-pointer">
       <svg
         xmlns="http://www.w3.org/2000/svg"
        className="size-10 md:size-12 lg:size-14"

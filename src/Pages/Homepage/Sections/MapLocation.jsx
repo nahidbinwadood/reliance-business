@@ -139,7 +139,7 @@ const MapLocation = () => {
     <div className="map-location">
       {/* Background Map */}
       <div
-        className="w-full transition-all duration-1000 ease-in-out bg-[#f4f8fb]"
+        className="w-full transition-all duration-1000 ease-in-out"
         style={{
           backgroundImage: `url(${locations[activeIndex].image})`,
           backgroundSize: 'cover',

@@ -1,4 +1,3 @@
-import 'aos/dist/aos.css';
 import PropTypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -10,11 +9,34 @@ import Sidebar from './Sidebar';
 
 gsap.registerPlugin(useGSAP);
 
+const subMenu = [
+  {
+    title: 'Company',
+    path: '/company',
+  },
+  {
+    title: 'Our Story',
+    path: '/our-story',
+  },
+  {
+    title: 'Team',
+    path: '/team',
+  },
+  {
+    title: 'Accessibility',
+    path: '/accessibility',
+  },
+];
+
 const NavLinkContainer = ({ navLinks }) => {
   const [isOpen, setOpen] = useState(false);
+  const [showSubmenu, setShowSubmenu] = useState(false);
   const sidebarRef = useRef(null);
   const hamburgerRef = useRef(null);
+  const submenuRef = useRef(null);
+
   useGSAP(() => {
+    // Initial navbar animations remain the same
     gsap.from('.navbar-contents', {
       y: 15,
       duration: 1,
@@ -23,25 +45,46 @@ const NavLinkContainer = ({ navLinks }) => {
       blur: 10,
       opacity: 0,
     });
-  }, []);
-  useGSAP(() => {
+
     gsap.from('.nav_links', {
       y: 15,
       duration: 2,
       ease: 'power2.out',
-      // stagger: 0.1,
       opacity: 0,
     });
-  });
-  useGSAP(() => {
+
     gsap.from(hamburgerRef.current, {
       y: 15,
       duration: 2,
       ease: 'power2.out',
-      // stagger: 0.1,
       opacity: 0,
     });
-  });
+  }, []);
+
+  // GSAP animation for submenu
+  useGSAP(() => {
+    if (submenuRef.current) {
+      if (showSubmenu) {
+        gsap.to(submenuRef.current, {
+          y: 5,
+          x:-100,
+          opacity: 1,
+          duration: 0.5,
+          ease: 'power2.out',
+          display: 'flex',
+        });
+      } else {
+        gsap.to(submenuRef.current, {
+          y: 30,
+          x:-100,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+          display: 'none',
+        });
+      }
+    }
+  }, [showSubmenu]);
 
   useEffect(() => {
     if (isOpen) {
@@ -65,6 +108,7 @@ const NavLinkContainer = ({ navLinks }) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+
   return (
     <>
       <div className="flex justify-between text-white absolute top-6 sm:top-8 md:top-12 lg:top-16 left-0 bg-transparent px-5 md:px-8 lg:px-12 w-full">
@@ -89,10 +133,58 @@ const NavLinkContainer = ({ navLinks }) => {
         </div>
 
         {/* navLinks */}
-        <ul className="hidden lg:flex items-center justify-between gap-8 2xl:gap-10 font-poppins font-semibold navbar-contents">
+        <ul
+          className="hidden lg:flex items-center justify-between gap-8 2xl:gap-10 font-poppins font-semibold navbar-contents"
+          onMouseLeave={() => setShowSubmenu(false)}
+        >
           {navLinks?.map((link) => (
-            <li key={link?.path} className="nav_links">
-              <NavLink to={'/'}>{link?.title}</NavLink>
+            <li
+              key={link?.path}
+              className={`nav_links cursor-pointer ${
+                link?.title === 'Who we are' ? 'relative' : ''
+              }`}
+              onMouseEnter={() => {
+                setShowSubmenu(link?.title === 'Who we are');
+              }}
+            >
+              <NavLink
+                className=""
+                to={link?.title === 'Who we are' ? '#' : link?.path}
+              >
+                {link?.title}
+              </NavLink>
+
+              {/* submenu */}
+              {link?.title === 'Who we are' && (
+                <div
+                  ref={submenuRef}
+                  className={`
+                    absolute bg-white rounded-lg
+                    font-poppins font-semibold
+                    text-black/50 p-3
+                    flex-col items-center gap-2 justify-center
+                    left-1/2 transform -translate-x-1/2
+                    top-full mt-4
+                    min-w-[200px]
+                    opacity-0
+                    shadow-lg
+                    ${showSubmenu ? 'block' : 'hidden'}
+                  `}
+                  onMouseEnter={() => setShowSubmenu(true)}
+                  onMouseLeave={() => setShowSubmenu(false)}
+                >
+                  {subMenu?.map((menu) => (
+                    <NavLink
+                    onClick={()=>setShowSubmenu(false)}
+                      to={'/'}
+                      className="py-2 px-7 hover:bg-gray-300 hover:text-black rounded-md transition-all duration-500 w-full"
+                      key={menu?.path}
+                    >
+                      {menu.title}
+                    </NavLink>
+                  ))}
+                </div>
+              )}
             </li>
           ))}
         </ul>
@@ -102,7 +194,6 @@ const NavLinkContainer = ({ navLinks }) => {
       </div>
 
       {/* sidebar */}
-
       <Sidebar
         sidebarRef={sidebarRef}
         isOpen={isOpen}
