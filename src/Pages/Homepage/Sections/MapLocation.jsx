@@ -3,6 +3,9 @@ import gsap from 'gsap';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import map1 from '../../../assets/images/map-1.png';
+import map2 from '../../../assets/images/map2.png';
+import map3 from '../../../assets/images/map-3.png';
 
 const MapLocation = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -17,7 +20,7 @@ const MapLocation = () => {
       telephoneNumber: '514-631-7999',
       phoneNumber: '514-631-3888',
       email: 'relianceconstruction.com',
-      image: 'https://i.postimg.cc/tTLbVBcb/map-1.png',
+      image: map1,
     },
     {
       locationTitle: 'Toronto',
@@ -28,7 +31,7 @@ const MapLocation = () => {
       telephoneNumber: '416-214-2233',
       phoneNumber: '416-214-2237',
       email: 'reception@reliancetoronto.com.com',
-      image: 'https://i.postimg.cc/XvVTZR7d/map-2.webp',
+      image: map2,
     },
     {
       locationTitle: 'Ottawa',
@@ -38,7 +41,7 @@ const MapLocation = () => {
       houseNumber: 'K1P 6L5',
       telephoneNumber: '343-309-5743',
       email: 'reception@relianceconstruction.com',
-      image: 'https://i.postimg.cc/525h241f/map-3.png',
+      image: map3,
     },
   ];
 
@@ -69,7 +72,7 @@ const MapLocation = () => {
     if (screenSize === 'large') {
       const interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % locations.length);
-      }, 3000);
+      }, 4000);
       return () => clearInterval(interval);
     }
   }, [locations.length, screenSize]);
@@ -167,20 +170,20 @@ const MapLocation = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          height: screenSize === 'small' ? '500px' : '400px',
+          height: screenSize === 'small' ? '500px' : '650px',
         }}
       />
 
       {/* Locations Container */}
       <div
         ref={containerRef}
-        className={`max-w-[1280px] mx-5 md:mx-8 lg:mx-12 xl:mx-auto bg-white shadow-lg rounded-2xl relative border-textColor border-[3px]
-          ${screenSize === 'small' ? 'mt-8' : '-mt-[200px]'}
+        className={`max-w-[1280px] mx-5 md:mx-8 lg:mx-12 xl:mx-auto bg-white shadow-lg rounded-2xl relative border-textColor border
+          ${screenSize === 'small' ? 'mt-8' : '-mt-[180px]'}
           ${
             screenSize === 'medium'
               ? 'px-6 py-8'
               : screenSize === 'large'
-              ? 'px-12 py-20'
+              ? 'px-12 py-10'
               : 'px-4 py-6'
           }
         `}
@@ -193,26 +196,15 @@ const MapLocation = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="42"
-              height="49"
-              viewBox="0 0 42 49"
-              fill="none"
+              width="50"
+              height="29"
+              viewBox="0 0 50 29"
+              fill="white"
             >
+              <path d="M12 26H38.5L49.5 29H2.5L12 26Z" fill="white" />
               <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M42 21C42 9.40202 32.598 0 21 0C9.40202 0 0 9.40202 0 21C0 23.8711 0.576173 26.6076 1.6192 29.1003C5.94533 40.912 21.1104 49 21.1104 49C21.1104 49 39.7389 39.0648 41.5928 25.1361C41.8599 23.7989 42 22.4158 42 21Z"
-                fill="#4096FA"
-              />
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M38.6509 24.7849L38.6318 24.8814L38.619 24.9789C37.8426 30.8763 33.4427 36.2795 28.6948 40.4277C26.3812 42.4489 24.1126 44.0616 22.42 45.1691C21.9283 45.4908 21.4872 45.7686 21.1104 46C20.8599 45.8462 20.5811 45.672 20.2779 45.4779C18.8615 44.5714 16.9286 43.2433 14.8719 41.5641C10.6804 38.142 6.31788 33.5375 4.4362 28.3436L4.41287 28.2792L4.38668 28.2159C3.4944 26.0601 3 23.691 3 21.1975C3 11.1473 11.0589 3 21 3C30.9411 3 39 11.1473 39 21.1975C39 22.4283 38.8796 23.6276 38.6509 24.7849Z"
-                fill="#00126F"
-              />
-              <path
-                d="M29 21C29 16.5817 25.4183 13 21 13C16.5817 13 13 16.5817 13 21C13 25.4183 16.5817 29 21 29C25.4183 29 29 25.4183 29 21Z"
-                fill="white"
+                d="M0 27.5C8 27.5 17.1688 27.8044 21 18.5C24.5 10 25.5 4 26 2C27.5 7.5 30.5 18 31.7056 20C32.9963 22.1411 37.2056 28.5 49.2056 27.5"
+                stroke="#4096FA"
               />
             </svg>
           </div>
