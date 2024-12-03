@@ -34,6 +34,7 @@ const NavLinkContainer = ({ navLinks }) => {
   const sidebarRef = useRef(null);
   const hamburgerRef = useRef(null);
   const submenuRef = useRef(null);
+  const whoWeAreRef = useRef(null);
 
   useGSAP(() => {
     // Initial navbar animations remain the same
@@ -61,7 +62,6 @@ const NavLinkContainer = ({ navLinks }) => {
     });
   }, []);
 
-  // GSAP animation for submenu
   useGSAP(() => {
     if (submenuRef.current) {
       if (showSubmenu) {
@@ -75,7 +75,6 @@ const NavLinkContainer = ({ navLinks }) => {
       } else {
         gsap.to(submenuRef.current, {
           y: 30,
-          x: -100,
           opacity: 0,
           duration: 0.6,
           ease: 'power2.out',
@@ -139,16 +138,17 @@ const NavLinkContainer = ({ navLinks }) => {
           {navLinks?.map((link) => (
             <li
               key={link?.path}
-              className={`nav_links cursor-pointer ${
-                link?.title === 'Who we are' ? 'relative' : ''
+              className={`nav_links cursor-pointer relative ${
+                link?.title === 'Who we are' ? 'group' : ''
               }`}
               onMouseEnter={() => {
                 setShowSubmenu(link?.title === 'Who we are');
               }}
+              ref={link?.title === 'Who we are' ? whoWeAreRef : null}
             >
               <NavLink
                 className=""
-                to={link?.title === 'Who we are' ? '#' : link?.path}
+                to={link?.title === 'Who we are' ? '/' : "/"}
               >
                 {link?.title}
               </NavLink>
@@ -157,12 +157,13 @@ const NavLinkContainer = ({ navLinks }) => {
               {link?.title === 'Who we are' && (
                 <div
                   ref={submenuRef}
-                  className={`absolute bg-white rounded-lg
+                  className={`
+                    absolute bg-white rounded-lg
                     font-poppins font-semibold
                     text-black/50 p-3
-                    flex-col items-center gap-2 justify-center
-                    left-1/2 transform -translate-x-1/2
-                    top-full mt-4
+                    flex-col items-start gap-2 justify-start // Changed to align left
+                    -left-10 // Kept left alignment
+                    top-full mt-4 // Positioned directly below the link
                     min-w-[200px]
                     opacity-0
                     shadow-lg
@@ -173,10 +174,10 @@ const NavLinkContainer = ({ navLinks }) => {
                 >
                   {subMenu?.map((menu) => (
                     <NavLink
-                      key={menu.path}
                       onClick={() => setShowSubmenu(false)}
 
-                      className="text-black/70 hover:text-black py-2 transition w-full text-start px-5 hover:bg-gray-50"
+                      className="py-2 px-7 hover:bg-gray-300 hover:text-black rounded-md transition-all duration-500 w-full text-left"
+                      key={menu?.path}
                     >
                       {menu.title}
                     </NavLink>
@@ -187,16 +188,18 @@ const NavLinkContainer = ({ navLinks }) => {
           ))}
         </ul>
       </div>
+      <div className="absolute top-5 right-0 px-12 text-white navbar-contents hidden lg:flex">
+        <p className="font-poppins tracking-[0.8px]">Français</p>
+      </div>
 
-      {/* Sidebar for mobile view */}
-      {isOpen && (
-        <Sidebar
-          ref={sidebarRef}
-          isOpen={isOpen}
-          setOpen={setOpen}
-          navLinks={navLinks}
-        />
-      )}
+      {/* sidebar */}
+      <Sidebar
+        subMenu={subMenu}
+        sidebarRef={sidebarRef}
+        isOpen={isOpen}
+        setOpen={setOpen}
+        navLinks={navLinks}
+      />
     </>
   );
 };
