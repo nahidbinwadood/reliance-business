@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { Link, NavLink } from 'react-router-dom';
 
 const Sidebar = ({ isOpen, setOpen, navLinks, sidebarRef, subMenu }) => {
   // State to track visibility of submenus
-  const [activeMenu, setActiveMenu] = useState(null); // Tracks which menu is open
+  const [activeMenu, setActiveMenu] = useState(null);
+  const submenuRef = useRef(null);
+  const submenuContentRef = useRef(null);
 
   useGSAP(() => {
     gsap.from('.sidebar-navLinks', {
@@ -23,6 +25,43 @@ const Sidebar = ({ isOpen, setOpen, navLinks, sidebarRef, subMenu }) => {
     // Toggle the submenu when "Who we are" is clicked
     setActiveMenu((prev) => (prev === menuTitle ? null : menuTitle));
   };
+
+  useEffect(() => {
+    if (submenuRef.current && submenuContentRef.current) {
+      const contentHeight = submenuContentRef.current.offsetHeight;
+
+      if (activeMenu === 'Who we are') {
+        // Expand the submenu
+        gsap.fromTo(
+          submenuRef.current,
+          {
+            height: 0,
+            paddingTop: 0,
+            paddingBottom: 0,
+            opacity: 0,
+          },
+          {
+            height: contentHeight,
+            paddingTop: 16,
+            paddingBottom: 16,
+            opacity: 1,
+            duration: 0.2,
+            ease: 'power2.inOut',
+          }
+        );
+      } else {
+        // Collapse the submenu
+        gsap.to(submenuRef.current, {
+          height: 0,
+          paddingTop: 0,
+          paddingBottom: 0,
+          opacity: 0,
+          duration: 0.2,
+          ease: 'power2.inOut',
+        });
+      }
+    }
+  }, [activeMenu]);
 
   return (
     <div
@@ -49,7 +88,7 @@ const Sidebar = ({ isOpen, setOpen, navLinks, sidebarRef, subMenu }) => {
               className="w-full flex items-center gap-4 sidebar-navLinks"
               onClick={() =>
                 link?.title === 'Who we are' && handleMenuClick(link?.title)
-              } // Toggle submenu visibility
+              }
             >
               {link?.title}
 
@@ -66,7 +105,7 @@ const Sidebar = ({ isOpen, setOpen, navLinks, sidebarRef, subMenu }) => {
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    className={` transition-all duration-300 ${
+                    className={`transition-transform duration-500 ${
                       activeMenu === 'Who we are' ? 'rotate-180' : ''
                     }`}
                   >
@@ -77,21 +116,31 @@ const Sidebar = ({ isOpen, setOpen, navLinks, sidebarRef, subMenu }) => {
             </NavLink>
 
             {/* Submenu (Only visible when the menu is active) */}
-            {link?.title === 'Who we are' && activeMenu === 'Who we are' && (
+            {link?.title === 'Who we are' && (
               <div
-                className={`flex flex-col gap-4 mt-4 ml-2 text-start transition-max-height duration-500 ease overflow-hidden ${
-                  activeMenu === 'Who we are' ? 'max-h-[130px]' : 'max-h-0  '
-                }`}
+                ref={submenuRef}
+                className="overflow-hidden transition-all duration-500 ml-2"
+                style={{
+                  height: 0,
+                  paddingTop: 0,
+                  paddingBottom: 0,
+                  opacity: 0,
+                }}
               >
-                {subMenu?.map((menu) => (
-                  <NavLink
-                    to={'/'}
-                    key={menu?.path}
-                    className="text-white rounded-md transition-all duration-500 w-full"
-                  >
-                    {menu.title}
-                  </NavLink>
-                ))}
+                <div
+                  ref={submenuContentRef}
+                  className="flex flex-col gap-4 text-start"
+                >
+                  {subMenu?.map((menu) => (
+                    <NavLink
+                      to={'/'}
+                      key={menu?.path}
+                      className="text-white rounded-md transition-all duration-500 w-full"
+                    >
+                      {menu.title}
+                    </NavLink>
+                  ))}
+                </div>
               </div>
             )}
           </li>
