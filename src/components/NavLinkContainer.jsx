@@ -67,7 +67,6 @@ const NavLinkContainer = ({ navLinks }) => {
       if (showSubmenu) {
         gsap.to(submenuRef.current, {
           y: 5,
-          x: -100,
           opacity: 1,
           duration: 0.5,
           ease: 'power2.out',
