@@ -157,8 +157,7 @@ const NavLinkContainer = ({ navLinks }) => {
               {link?.title === 'Who we are' && (
                 <div
                   ref={submenuRef}
-                  className={`
-                    absolute bg-white rounded-lg
+                  className={`absolute bg-white rounded-lg
                     font-poppins font-semibold
                     text-black/50 p-3
                     flex-col items-center gap-2 justify-center
@@ -174,10 +173,10 @@ const NavLinkContainer = ({ navLinks }) => {
                 >
                   {subMenu?.map((menu) => (
                     <NavLink
+                      key={menu.path}
                       onClick={() => setShowSubmenu(false)}
-                      to={'/'}
-                      className="py-2 px-7 hover:bg-gray-300 hover:text-black rounded-md transition-all duration-500 w-full"
-                      key={menu?.path}
+
+                      className="text-black/70 hover:text-black py-2 transition w-full text-start px-5 hover:bg-gray-50"
                     >
                       {menu.title}
                     </NavLink>
@@ -188,18 +187,16 @@ const NavLinkContainer = ({ navLinks }) => {
           ))}
         </ul>
       </div>
-      <div className="absolute top-5 right-0 px-12 text-white navbar-contents hidden lg:flex">
-        <p className="font-poppins tracking-[0.8px]">Français</p>
-      </div>
 
-      {/* sidebar */}
-      <Sidebar
-        subMenu={subMenu}
-        sidebarRef={sidebarRef}
-        isOpen={isOpen}
-        setOpen={setOpen}
-        navLinks={navLinks}
-      />
+      {/* Sidebar for mobile view */}
+      {isOpen && (
+        <Sidebar
+          ref={sidebarRef}
+          isOpen={isOpen}
+          setOpen={setOpen}
+          navLinks={navLinks}
+        />
+      )}
     </>
   );
 };
