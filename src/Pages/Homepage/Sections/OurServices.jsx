@@ -1,4 +1,4 @@
-import   { useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import TitleContainer from '../../../components/TitleContainer';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -8,7 +8,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-creative';
 
 // Import required modules
-import { Pagination, Navigation, Autoplay, EffectCreative } from 'swiper/modules';
+import {
+  Pagination,
+  Navigation,
+  Autoplay,
+  EffectCreative,
+} from 'swiper/modules';
 import PrimaryButton from '../../../components/buttons/PrimaryButton';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -21,59 +26,64 @@ const OurServices = () => {
         title: 'Construction Management',
         id: 0,
         image: 'https://i.postimg.cc/RVxRQ5w6/image-1.jpg',
-        description: 'Comprehensive oversight and coordination of construction projects.'
+        description:
+          'Comprehensive oversight and coordination of construction projects.',
       },
       {
         title: 'Design-Build',
         id: 1,
         image: 'https://i.postimg.cc/j5dmjXmq/2.jpg',
-        description: 'Integrated design and construction services under a single contract.'
+        description:
+          'Integrated design and construction services under a single contract.',
       },
       {
         title: 'Lump Sum',
         id: 2,
         image: 'https://i.postimg.cc/XJHhB56f/4.jpg',
-        description: 'Fixed-price contract with a predetermined total cost.'
+        description: 'Fixed-price contract with a predetermined total cost.',
       },
       {
         title: 'Pre-Construction Services',
         id: 3,
         image: 'https://i.postimg.cc/QNzwXcbs/5.jpg',
-        description: 'Comprehensive planning and feasibility analysis before project initiation.'
+        description:
+          'Comprehensive planning and feasibility analysis before project initiation.',
       },
       {
         title: 'Value Engineering / Constructability and Advisory Services',
         id: 4,
         image: 'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-        description: 'Optimizing project value through cost-effective design and construction strategies.'
+        description:
+          'Optimizing project value through cost-effective design and construction strategies.',
       },
       {
         title: 'PPP (Public Private Partnerships)',
         id: 5,
         image: 'https://i.postimg.cc/T1B4CXwh/1.jpg',
-        description: 'Collaborative projects between government and private sector entities.'
+        description:
+          'Collaborative projects between government and private sector entities.',
       },
       {
         title: 'Construction Financing',
         id: 6,
         image: 'https://i.postimg.cc/L40Kncmc/6.jpg',
-        description: 'Comprehensive financial solutions for construction projects.'
-      }
+        description:
+          'Comprehensive financial solutions for construction projects.',
+      },
     ],
     []
   );
 
   gsap.registerPlugin(useGSAP, ScrollTrigger);
 
-  const [activeTab, setActiveTab] = useState(services[0]);
+  const [activeTab, setActiveTab] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const borderRef = useRef(null);
 
-  const handleTabChange = (service) => {
-    setActiveTab(service);
-    const serviceIndex = services.findIndex(s => s.id === service.id);
+  const handleTabChange = (index) => {
+    setActiveTab(index);
     if (swiperInstance) {
-      swiperInstance.slideTo(serviceIndex, 600, false);
+      swiperInstance.slideTo(index, 600, false);
     }
   };
 
@@ -168,21 +178,21 @@ const OurServices = () => {
         <div className="flex flex-col md:flex-row gap-12 w-full mt-6 md:mt-10 lg:mt-12">
           {/* Services List */}
           <div className="md:w-1/2 flex flex-col gap-3">
-            {services?.map((service) => (
+            {services.map((service, index) => (
               <div
-                key={service?.id}
+                key={service.id}
                 className="flex items-center gap-4 text-white md:text-lg font-medium our-services-point"
               >
                 <div className="size-[6px] bg-white rounded-full" />
                 <div
-                  onClick={() => handleTabChange(service)}
+                  onClick={() => handleTabChange(index)}
                   className={`cursor-pointer transition-all duration-300 ease-in-out ${
-                    activeTab.title === service?.title
+                    activeTab === index
                       ? 'text-[#4096FA] scale-105'
                       : 'text-white hover:text-[#4096FA] hover:scale-105'
                   }`}
                 >
-                  {service?.title}
+                  {service.title}
                 </div>
               </div>
             ))}
@@ -194,31 +204,34 @@ const OurServices = () => {
           </div>
 
           {/* Swiper Slider */}
-          <div className="w-full md:w-1/2 h-full our-services our-services-slides">
+          <div className="w-full md:w-1/2 h-full our-services our-services-slides overflow-hidden">
             <Swiper
               onSwiper={setSwiperInstance}
               effect={'creative'}
               creativeEffect={{
                 prev: {
-                  shadow: true,
-                  translate: ['0%', 0, -1],
+                  shadow: false,
+                  translate: ['-100%', 0, -1],
+                  overflow: 'hidden',
+                  clipPath: 'polygon(100% 0, 100% 100%, 0 100%, 0 0)',
                 },
                 next: {
                   translate: ['100%', 0, 0],
+                  overflow: 'hidden',
                 },
               }}
               speed={600}
               navigation={false}
               slidesPerView={1}
               onSlideChange={(e) => {
-                setActiveTab(services[e.realIndex]);
+                setActiveTab(e.realIndex);
               }}
               autoplay={{
-                delay: 5000,
+                delay: 3000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
               }}
-              spaceBetween={20}
+              spaceBetween={40}
               loop={true}
               pagination={{
                 clickable: true,
@@ -227,21 +240,20 @@ const OurServices = () => {
               modules={[Pagination, Navigation, Autoplay, EffectCreative]}
               className="mySwiper rounded-lg"
             >
-              {services?.map((service) => (
-                <SwiperSlide key={service?.id}>
-                  <div className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] relative p-2 md:p-3 group">
-                    <div className="size-20 md:size-28 lg:size-32 bg-[#479BEB] absolute top-0 right-0 -z-10 rounded-md md:rounded-lg
-                      transition-transform duration-300 group-hover:scale-105">
-                      {/* Optional: Add service description */}
-                      <div className="absolute bottom-2 left-2 text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        {service.description}
-                      </div>
-                    </div>
+              {services.map((service, index) => (
+                <SwiperSlide key={service.id}>
+                  <div className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px] relative p-2.5 group">
+                    <div
+                      className={`size-20 md:size-28 bg-[#479BEB] absolute top-0 right-0 -z-10 rounded-md md:rounded-lg transition-transform duration-300 ${
+                        swiperInstance?.realIndex === index
+                          ? 'scale-100'
+                          : 'scale-0'
+                      }`}
+                    ></div>
                     <img
-                      className="w-full h-full object-cover rounded-lg
-                        transition-transform duration-300"
-                      src={service?.image}
-                      alt={service?.title || 'Service'}
+                      className="w-full h-full object-cover rounded-lg transition-transform duration-300"
+                      src={service.image}
+                      alt={service.title || 'Service'}
                     />
                   </div>
                 </SwiperSlide>

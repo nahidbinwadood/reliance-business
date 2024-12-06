@@ -83,7 +83,11 @@ body {
   align-items: center;
   gap: 20px;
 }
-
-body {
-  overflow-x: hidden !important;
+.swiper {
+  overflow: hidden;
 }
+
+.swiper-slide {
+  overflow: hidden;
+}
+
