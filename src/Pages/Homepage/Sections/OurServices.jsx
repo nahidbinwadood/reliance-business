@@ -18,55 +18,61 @@ import PrimaryButton from '../../../components/buttons/PrimaryButton';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import slider1 from '../../../assets/images/slides/1.jpg';
+import slider2 from '../../../assets/images/slides/2.jpg';
+import slider3 from '../../../assets/images/slides/3.jpg';
+import slider4 from '../../../assets/images/slides/4.jpg';
+import slider5 from '../../../assets/images/slides/5.jpg';
+import slider6 from '../../../assets/images/slides/6.jpg';
+import slider7 from '../../../assets/images/slides/7.jpg';
 const OurServices = () => {
   const services = useMemo(
     () => [
       {
         title: 'Construction Management',
         id: 0,
-        image: 'https://i.postimg.cc/RVxRQ5w6/image-1.jpg',
+        image: slider7,
         description:
           'Comprehensive oversight and coordination of construction projects.',
       },
       {
         title: 'Design-Build',
         id: 1,
-        image: 'https://i.postimg.cc/j5dmjXmq/2.jpg',
+        image: slider3,
         description:
           'Integrated design and construction services under a single contract.',
       },
       {
         title: 'Lump Sum',
         id: 2,
-        image: 'https://i.postimg.cc/XJHhB56f/4.jpg',
+        image: slider4,
         description: 'Fixed-price contract with a predetermined total cost.',
       },
       {
         title: 'Pre-Construction Services',
         id: 3,
-        image: 'https://i.postimg.cc/QNzwXcbs/5.jpg',
+        image: slider1,
         description:
           'Comprehensive planning and feasibility analysis before project initiation.',
       },
       {
         title: 'Value Engineering / Constructability and Advisory Services',
         id: 4,
-        image: 'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+        image: slider5,
         description:
           'Optimizing project value through cost-effective design and construction strategies.',
       },
       {
         title: 'PPP (Public Private Partnerships)',
         id: 5,
-        image: 'https://i.postimg.cc/T1B4CXwh/1.jpg',
+        image: slider6,
         description:
           'Collaborative projects between government and private sector entities.',
       },
       {
         title: 'Construction Financing',
         id: 6,
-        image: 'https://i.postimg.cc/L40Kncmc/6.jpg',
+        image: slider2,
         description:
           'Comprehensive financial solutions for construction projects.',
       },
@@ -204,7 +210,7 @@ const OurServices = () => {
           </div>
 
           {/* Swiper Slider */}
-          <div className="w-full md:w-1/2 h-full our-services our-services-slides overflow-hidden">
+          <div className="w-full md:w-1/2 h-full our-services our-services-slides overflow-hidden rounded-lg">
             <Swiper
               onSwiper={setSwiperInstance}
               effect={'creative'}
@@ -238,7 +244,7 @@ const OurServices = () => {
                 dynamicBullets: true,
               }}
               modules={[Pagination, Navigation, Autoplay, EffectCreative]}
-              className="mySwiper rounded-lg"
+              className="mySwiper !rounded-lg overflow-hidden"
             >
               {services.map((service, index) => (
                 <SwiperSlide key={service.id}>

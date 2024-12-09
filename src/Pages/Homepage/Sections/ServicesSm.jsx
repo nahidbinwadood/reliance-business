@@ -9,6 +9,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
+import slider1 from '../../../assets/images/slides/1.jpg';
+import slider2 from '../../../assets/images/slides/2.jpg';
+import slider3 from '../../../assets/images/slides/3.jpg';
+import slider4 from '../../../assets/images/slides/4.jpg';
+import slider5 from '../../../assets/images/slides/5.jpg';
+import slider6 from '../../../assets/images/slides/6.jpg';
 
 const ServicesSm = () => {
   const [swiperRef, setSwiperRef] = useState(null);
@@ -23,37 +29,37 @@ const ServicesSm = () => {
       {
         title: 'Construction Management',
         id: 0,
-        image: 'https://i.postimg.cc/RVxRQ5w6/image-1.jpg',
+        image: slider1,
       },
       {
         title: 'Design-Build',
         id: 1,
-        image: 'https://i.postimg.cc/j5dmjXmq/2.jpg',
+        image: slider2,
       },
       {
         title: 'Lump Sum',
         id: 2,
-        image: 'https://i.postimg.cc/XJHhB56f/4.jpg',
+        image: slider3,
       },
       {
         title: 'Pre-Construction Services',
         id: 3,
-        image: 'https://i.postimg.cc/QNzwXcbs/5.jpg',
+        image: slider5,
       },
       {
         title: 'Value Engineering / Constructability and Advisory Services',
         id: 4,
-        image: 'https://i.postimg.cc/T1KsVPTZ/3.jpg',
+        image: slider4,
       },
       {
         title: 'PPP (Public Private Partnerships)',
         id: 5,
-        image: 'https://i.postimg.cc/T1B4CXwh/1.jpg',
+        image: slider1,
       },
       {
         title: 'Construction Financing',
         id: 6,
-        image: 'https://i.postimg.cc/L40Kncmc/6.jpg',
+        image: slider6,
       },
     ],
     []

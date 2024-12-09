@@ -3,6 +3,11 @@ import TabContents from '../../../components/TabContents';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
+import slider1 from '../../../assets/images/slides/1.jpg';
+import slider2 from '../../../assets/images/slides/2.jpg';
+import slider3 from '../../../assets/images/slides/3.jpg';
+import slider4 from '../../../assets/images/slides/4.jpg';
+import slider5 from '../../../assets/images/slides/5.jpg';
 
 const HomepageTabs = () => {
   gsap.registerPlugin(useGSAP, ScrollTrigger);
@@ -13,22 +18,8 @@ const HomepageTabs = () => {
         highlightedText: 'Our',
         contentTitle: 'Industrial',
         images: {
-          leftSliderImages: [
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-          ],
-          rightSliderImages: [
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-          ],
+          leftSliderImages: [slider1, slider2, slider3, slider4, slider5],
+          rightSliderImages: [slider4, slider5, slider2, slider1, slider3],
         },
         description: [
           'We undertake a diverse range of projects - from high-rise office towers and luxury hotels to vast shopping centers and cutting-edge facilities for manufacturing.',
@@ -41,22 +32,8 @@ const HomepageTabs = () => {
         highlightedText: 'Our',
         contentTitle: 'Hospitality',
         images: {
-          leftSliderImages: [
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-          ],
-          rightSliderImages: [
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-          ],
+          leftSliderImages: [slider1, slider2, slider3, slider4, slider5],
+          rightSliderImages: [slider4, slider5, slider2, slider1, slider3],
         },
         description: [
           'We specialize in creating luxurious and inviting spaces for the hospitality industry, including hotels, resorts, and entertainment facilities.',
@@ -69,22 +46,8 @@ const HomepageTabs = () => {
         highlightedText: 'Our',
         contentTitle: 'Residential',
         images: {
-          leftSliderImages: [
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-          ],
-          rightSliderImages: [
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-          ],
+          leftSliderImages: [slider1, slider2, slider3, slider4, slider5],
+          rightSliderImages: [slider4, slider5, slider2, slider1, slider3],
         },
         description: [
           'Our residential projects range from modern apartments to luxury estates, tailored to meet the individual needs of homeowners.',
@@ -97,22 +60,8 @@ const HomepageTabs = () => {
         highlightedText: 'Advanced',
         contentTitle: 'Technology',
         images: {
-          leftSliderImages: [
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-          ],
-          rightSliderImages: [
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-          ],
+          leftSliderImages: [slider1, slider2, slider3, slider4, slider5],
+          rightSliderImages: [slider4, slider5, slider2, slider1, slider3],
         },
         description: [
           'We design and build cutting-edge facilities for advanced technology companies, focusing on precision and innovation.',
@@ -125,22 +74,8 @@ const HomepageTabs = () => {
         highlightedText: 'Our',
         contentTitle: 'Retail',
         images: {
-          leftSliderImages: [
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-          ],
-          rightSliderImages: [
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-          ],
+          leftSliderImages: [slider1, slider2, slider3, slider4, slider5],
+          rightSliderImages: [slider4, slider5, slider2, slider1, slider3],
         },
         description: [
           'Our retail projects include shopping malls, flagship stores, and boutique outlets, designed to create exceptional customer experiences.',
@@ -153,22 +88,8 @@ const HomepageTabs = () => {
         highlightedText: 'Car',
         contentTitle: 'Dealerships',
         images: {
-          leftSliderImages: [
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-          ],
-          rightSliderImages: [
-            'https://i.postimg.cc/XJHhB56f/4.jpg',
-            'https://i.postimg.cc/QNzwXcbs/5.jpg',
-            'https://i.postimg.cc/L40Kncmc/6.jpg',
-            'https://i.postimg.cc/T1B4CXwh/1.jpg',
-            'https://i.postimg.cc/j5dmjXmq/2.jpg',
-            'https://i.postimg.cc/T1KsVPTZ/3.jpg',
-          ],
+          leftSliderImages: [slider1, slider2, slider3, slider4, slider5],
+          rightSliderImages: [slider4, slider5, slider2, slider1, slider3],
         },
         description: [
           'We design state-of-the-art car dealerships that showcase vehicles in an inviting and professional environment.',
